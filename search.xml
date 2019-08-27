@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nexT的配置优化]]></title>
+    <url>%2F2019%2F08%2F27%2FnexT%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[写在前面 这是我的第一篇博客，我这个博客用的是用的比较广泛的nexT主题，所以想记录一下我对nexT简单基础配置 hexo最常用的命令 hexo s:启动本地服务器，用于预览主题,预览的同时可以修改文章内容或主题代码，保存后刷新页面即可, 对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果 hexo g:生成网站静态文件到默认设置的 public 文件夹。便于查看网站生成的静态文件或者手动部署网站； hexo d:自动生成网站静态文件，并部署到设定的仓库。 hexo clean:清除缓存文件 db.json 和已生成的静态文件 public 。 每次修改后都要在博客所在文件夹右键 Git bush Here输入 hexo s 预览效果，如果效果合适，再输入hexo g hexo d 发布到设定的github仓库 如果失败可以尝试 hexo clean 再进行重复操作 nexT配置优化1 启用主题 打开所在博客所在文件夹的站点配置文件_config.yml,找到字段theme 将theme后面改成，next（注意下载的next主题的文件名一定也是next否则theme后面写next不生效） 2 将next主题的文字改成中文 我们进入博客所在文件夹-&gt;themes-&gt;next-&gt;lauguages 我们可以发现这里面有好多YML文件，官方文档给的是中文改成zh-Hans.但是我当时改完之后发现好像变成了德语，后来查阅这个laguages文件才发现，简体中文对应的是zh-CN 明确语言之后我们再次进入站点配置文件_config.yml 找到laguages字段 冒号后面写zh-CN 3 增加标签页和分类页 进入next里找到主题的配置文件，找到关键字menu 在menu下tags和categories前面的# 去掉]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>nexT配置优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[苍糜]]></title>
     <url>%2F2019%2F08%2F27%2F%E8%8B%8D%E7%B3%9C%2F</url>
     <content type="text"><![CDATA[这是 H1 列表1 列表2 a 子列表 b 子列表 列表3 ca 字体是斜线的 字体是加粗的 &lt;html&gt;&lt;/html&gt; 1234&lt;html&gt;&lt;/html&gt;&lt;html&gt;&lt;/html&gt;&lt;html&gt;&lt;/html&gt;&lt;html&gt;&lt;/html&gt; 引用]]></content>
