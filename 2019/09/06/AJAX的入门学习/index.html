@@ -70,7 +70,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/cangmis/images/master/7.png?token=AM6S7AWNVNBS6PYCC26OQOK5OIGTK">
 <meta property="og:image" content="https://raw.githubusercontent.com/cangmis/images/master/11.png?token=AM6S7ASKPVYMFZNC5L3HSRS5OIGGS">
 <meta property="og:image" content="https://raw.githubusercontent.com/cangmis/images/master/12.png?token=AM6S7AWYVBGAZA2UX344CUC5OIGJG">
-<meta property="og:updated_time" content="2019-09-06T07:40:11.557Z">
+<meta property="og:updated_time" content="2019-09-06T07:43:48.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX的入门学习">
 <meta name="twitter:description" content="AJAX介绍 AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）  AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。  AJAX 不是新的编程语言，而是一种使用现有标准的新方法。  AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并">
@@ -283,7 +283,7 @@
                 
               
 
-              <time title="创建时间：2019-09-06 13:42:13 / 修改时间：15:40:11" itemprop="dateCreated datePublished" datetime="2019-09-06T13:42:13+08:00">2019-09-06</time>
+              <time title="创建时间：2019-09-06 13:42:13 / 修改时间：15:43:48" itemprop="dateCreated datePublished" datetime="2019-09-06T13:42:13+08:00">2019-09-06</time>
             </span>
           
             
@@ -336,7 +336,8 @@
 <li><p>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
 </li>
 <li><p>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。</p>
-<h3 id="AJAX工作原理"><a href="#AJAX工作原理" class="headerlink" title="AJAX工作原理"></a>AJAX工作原理</h3></li>
+<p>###AJAX工作原理</p>
+</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/cangmis/images/master/7.png?token=AM6S7AWNVNBS6PYCC26OQOK5OIGTK" alt></p>
 <h3 id="AJAX的使用流程"><a href="#AJAX的使用流程" class="headerlink" title="AJAX的使用流程"></a>AJAX的使用流程</h3><p>1.创建XmlHttpRequest对象</p>
@@ -362,7 +363,8 @@ var xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
 <p><strong>同步执行：</strong><br>同步：提交请求-&gt;等待服务器处理-&gt;处理完毕返回这个期间客户端浏览器不能干任何事<br>代码进入一个等待的时候，数据不返回时不会向下执行</p>
 <p><strong>异步执行：</strong><br>异步:请求通过事件触发-&gt;服务器处理（这是浏览器仍然可以作其他事情）-&gt;处理完毕<br>不会处于堵塞的 会一直向下执行，但是数据的返回时候触发onreadystatechange事件来完成<br>注意：当使用 async=false 时，请不要编写 onreadystatechange 函数 - 把代码放到 send() 语句后面即可。</p>
 <p>实际使用时   ajax推荐使用异步</p>
-<h2 id="实例："><a href="#实例：" class="headerlink" title=" ###实例："></a> ###实例：</h2><p>服务器响应代码：</p>
+<h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><hr>
+<p>服务器响应代码：</p>
 <pre><code>import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -521,7 +523,7 @@ xmlhttp.onreadystatechange=function()//异步获取数据方法
 <p>//获取相应体的文本<br>var responseText=xmlhttp.responseText;</p>
 <p>}</p>
 <p>}</p>
-<h2 id="jQuery对Ajax的支持"><a href="#jQuery对Ajax的支持" class="headerlink" title="jQuery对Ajax的支持"></a>jQuery对Ajax的支持</h2><ul>
+<h2 id="uery对Ajax的支持"><a href="#uery对Ajax的支持" class="headerlink" title="uery对Ajax的支持"></a>uery对Ajax的支持</h2><ul>
 <li><p>url:发送请求地址</p>
 </li>
 <li><p>type:请求类型get/post</p>
@@ -884,7 +886,7 @@ $(&quot;input[id=&apos;b3&apos;]&quot;).click(function(){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX介绍"><span class="nav-number">1.</span> <span class="nav-text">AJAX介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">AJAX工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX的使用流程"><span class="nav-number">1.2.</span> <span class="nav-text">AJAX的使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#异步-True-或-False？"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">异步 - True 或 False？</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例："><span class="nav-number">2.</span> <span class="nav-text"> ###实例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步实例："><span class="nav-number">2.0.1.</span> <span class="nav-text">同步实例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步实例："><span class="nav-number">2.0.2.</span> <span class="nav-text">异步实例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery对Ajax的支持"><span class="nav-number">3.</span> <span class="nav-text">jQuery对Ajax的支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text"></span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX介绍"><span class="nav-number">1.</span> <span class="nav-text">AJAX介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX的使用流程"><span class="nav-number">1.1.</span> <span class="nav-text">AJAX的使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#异步-True-或-False？"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">异步 - True 或 False？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例："><span class="nav-number">1.2.</span> <span class="nav-text">实例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步实例："><span class="nav-number">1.2.1.</span> <span class="nav-text">同步实例：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步实例："><span class="nav-number">1.2.2.</span> <span class="nav-text">异步实例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uery对Ajax的支持"><span class="nav-number">2.</span> <span class="nav-text">uery对Ajax的支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>
