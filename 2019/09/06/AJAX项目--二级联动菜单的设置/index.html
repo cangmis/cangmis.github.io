@@ -68,7 +68,7 @@
 <meta property="og:description" content="介绍二级联动的菜单在网页中很常见，通常是通过鼠标点一级菜单的相关内容之后二级菜单做出响应变化显示出一级菜单对应的子菜单。我这次是用AJAX的相关知识进行实现。 我的思路：1.首先我构造了一个类Channel目的就是为了为每个菜单添加名字和内容的两个属性。 2.在网页初初始化时候我们要对一级菜单进行显示，也就是向servlet中传递一个level=1的变量当服务器接收到level=1时 将一级菜单里">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/cangmis/images/master/13.png?token=AM6S7ARRSH4AZWV2FGBIY7S5OIMKM">
-<meta property="og:updated_time" content="2019-09-06T08:28:55.574Z">
+<meta property="og:updated_time" content="2019-09-06T08:35:01.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX项目-二级联动菜单的设置">
 <meta name="twitter:description" content="介绍二级联动的菜单在网页中很常见，通常是通过鼠标点一级菜单的相关内容之后二级菜单做出响应变化显示出一级菜单对应的子菜单。我这次是用AJAX的相关知识进行实现。 我的思路：1.首先我构造了一个类Channel目的就是为了为每个菜单添加名字和内容的两个属性。 2.在网页初初始化时候我们要对一级菜单进行显示，也就是向servlet中传递一个level=1的变量当服务器接收到level=1时 将一级菜单里">
@@ -281,7 +281,7 @@
                 
               
 
-              <time title="创建时间：2019-09-06 17:50:45 / 修改时间：16:28:55" itemprop="dateCreated datePublished" datetime="2019-09-06T17:50:45+08:00">2019-09-06</time>
+              <time title="创建时间：2019-09-06 17:50:45 / 修改时间：16:35:01" itemprop="dateCreated datePublished" datetime="2019-09-06T17:50:45+08:00">2019-09-06</time>
             </span>
           
             
@@ -336,9 +336,7 @@ public class Channel {
     public Channel()
     {
 
-
-
-}
+    }
 public String getName() {
     return name;
 }
@@ -364,9 +362,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.alibaba.fastjson.JSON;
-
 /**
  * Servlet implementation class ChannelServlet
  */
@@ -406,26 +402,19 @@ public class ChannelServlet extends HttpServlet {
     channelist.add(new Channel(&quot;micro&quot;,&quot;微服务&quot;));
     channelist.add(new Channel(&quot;blocklist&quot;,&quot;区块链&quot;));
           channelist.add(new Channel(&quot;other&quot;,&quot;。。。&quot;));
-
-        }
+         }
         else if (parent.equals(&quot;web&quot;))
         {
 
-
             channelist.add(new Channel(&quot;html&quot;,&quot;HTML&quot;));
-
             channelist.add(new Channel(&quot;css&quot;,&quot;CSS&quot;));
-              channelist.add(new Channel(&quot;other&quot;,&quot;。。。&quot;));
-
-
+            channelist.add(new Channel(&quot;other&quot;,&quot;。。。&quot;));
         }
 
     }
 String json=JSON.toJSONString(channelist);
     response.setContentType(&quot;text/html;charset=utf-8&quot;);
     response.getWriter().println(json);
-
-
 }
 }
 
@@ -441,7 +430,6 @@ String json=JSON.toJSONString(channelist);
 $(function(){//初始化显示一级菜单
 
     $.ajax({
-
     &quot;url&quot;:&quot;/ajax/channel&quot;,
     &quot;data&quot;:{&quot;level&quot;:&quot;1&quot;},
     &quot;dataType&quot;:&quot;json&quot;,
@@ -452,20 +440,17 @@ $(function(){//初始化显示一级菜单
             {
             var ch=json[i];
 
-            $(&quot;#lv1&quot;).append(&quot;&lt;option value=&apos;&quot;+ch.name +&quot;&apos;&gt;&quot;+ch.code+&quot;&lt;/option&quot;);
-
+            $(&quot;#lv1&quot;).append(&quot;&lt;option value=&apos;&quot;+ch.name +&quot;&apos;&gt;&quot;+ch.code+&quot;&lt;/option&quot;);        
     }
 }
-
-    })
 })
-
-    $(function(){//二级菜单
+})
+   $(function(){//二级菜单
     $(&quot;#lv1&quot;).click(function(){
     var parent=$(this).val();
     $.ajax({
 
-            &quot;url&quot;:&quot;/ajax/channel&quot;,
+        &quot;url&quot;:&quot;/ajax/channel&quot;,
         &quot;data&quot;:{&quot;level&quot;:&quot;2&quot;,&quot;parent&quot;:parent},
         &quot;dataType&quot;:&quot;json&quot;,
         &quot;type&quot;:&quot;get&quot;,
@@ -477,15 +462,12 @@ $(function(){//初始化显示一级菜单
 
                 $(&quot;#lv2&quot;).append(&quot;&lt;option value=&apos;&quot;+ch.name +&quot;&apos;&gt;&quot;+ch.code+&quot;&lt;/option&quot;);
 
-                }
-
-
+         }
         }
-})
+       })
 
-})
+      })
     })
-
 &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -493,7 +475,6 @@ $(function(){//初始化显示一级菜单
    &lt;option selected=&quot;selected&quot;&gt;请选择&lt;/option&gt;//带有预先设置的下拉框
    &lt;/select&gt;
 &lt;select id=&quot;lv2&quot; style=&quot;width:200px;height:30px&quot;&gt;&lt;/select&gt;
-
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><p><img src="https://raw.githubusercontent.com/cangmis/images/master/13.png?token=AM6S7ARRSH4AZWV2FGBIY7S5OIMKM" alt></p>
 
