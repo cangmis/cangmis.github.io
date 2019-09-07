@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="什么是正则表达式 正则表达式是检查，匹配字符串的表达式  正则表达式是描述规则，主流语言都有很好的支持  字符串校验，查找与替换是正则表达式主要使用场景 字符范围的匹配 A   精准匹配单个字符  x|y   允许出2个字符  [xyz]字符集和，允许出现集合内任意单个字符  [a-z] [A-z] [0-9] 字符范围  [^xyz] [^0-9] 集合中字符不允许出现   ^ 这个符号相当于取">
+<meta name="keywords" content="javaweb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="http://cangmis.github.io/2019/09/07/正则表达式/index.html">
+<meta property="og:site_name" content="Cangmi">
+<meta property="og:description" content="什么是正则表达式 正则表达式是检查，匹配字符串的表达式  正则表达式是描述规则，主流语言都有很好的支持  字符串校验，查找与替换是正则表达式主要使用场景 字符范围的匹配 A   精准匹配单个字符  x|y   允许出2个字符  [xyz]字符集和，允许出现集合内任意单个字符  [a-z] [A-z] [0-9] 字符范围  [^xyz] [^0-9] 集合中字符不允许出现   ^ 这个符号相当于取">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-07T05:35:14.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式">
+<meta name="twitter:description" content="什么是正则表达式 正则表达式是检查，匹配字符串的表达式  正则表达式是描述规则，主流语言都有很好的支持  字符串校验，查找与替换是正则表达式主要使用场景 字符范围的匹配 A   精准匹配单个字符  x|y   允许出2个字符  [xyz]字符集和，允许出现集合内任意单个字符  [a-z] [A-z] [0-9] 字符范围  [^xyz] [^0-9] 集合中字符不允许出现   ^ 这个符号相当于取">
+  <link rel="canonical" href="http://cangmis.github.io/2019/09/07/正则表达式/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>正则表达式 | Cangmi</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/cangmis" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cangmi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cangmis.github.io/2019/09/07/正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="苍糜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cangmi">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">正则表达式
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-07 13:30:28 / 修改时间：13:35:14" itemprop="dateCreated datePublished" datetime="2019-09-07T13:30:28+08:00">2019-09-07</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="什么是正则表达式"><a href="#什么是正则表达式" class="headerlink" title="什么是正则表达式"></a>什么是正则表达式</h2><ul>
+<li><p>正则表达式是检查，匹配字符串的表达式</p>
+</li>
+<li><p>正则表达式是描述规则，主流语言都有很好的支持</p>
+</li>
+<li><p>字符串校验，查找与替换是正则表达式主要使用场景</p>
+<h3 id="字符范围的匹配"><a href="#字符范围的匹配" class="headerlink" title="字符范围的匹配"></a>字符范围的匹配</h3></li>
+<li><p>A   精准匹配单个字符</p>
+</li>
+<li><p>x|y   允许出2个字符</p>
+</li>
+<li><p>[xyz]字符集和，允许出现集合内任意单个字符</p>
+</li>
+<li><p>[a-z] [A-z] [0-9] 字符范围</p>
+</li>
+<li><p>[^xyz] [^0-9] 集合中字符不允许出现</p>
+</li>
+</ul>
+<p><em>^ 这个符号相当于取反  也就是不能有这个符号后面的字符</em></p>
+<h2 id="练习："><a href="#练习：" class="headerlink" title="练习："></a>练习：</h2><p><strong>精准匹配字符串“hallo”或者“hello”</strong></p>
+<p>h[ae]llo</p>
+<p><strong>请匹配数字范围（0570-0579)</strong></p>
+<p>[0570-0579]或者 057[0-9]</p>
+<p><strong>单选题只允许输入ABCD其中一项</strong><br>[ABCD] [A-D]</p>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><blockquote>
+<p>所谓元字符就是指那些在正则表达式中具有特殊意义的专用字符，可以用来规定其前导字符(即位于元字符前面的字符)在目标对象中的出现模式<br>元字符是一个或一组代替一个或多个字符的字符。</p>
+</blockquote>
+<ul>
+<li><p>\d    匹配任意单个数字</p>
+</li>
+<li><p>\D    匹配\d规则之外的任意单个字符</p>
+</li>
+<li><p>\w    匹配任意单个字母，数字，下划线</p>
+</li>
+<li><p>\W    匹配\w之外的任意单个字符</p>
+</li>
+<li><p>\s    匹配单个空格</p>
+</li>
+<li><p>\n    匹配单个换行符</p>
+</li>
+<li><p>. 匹配任意单个字符(换行符除外）</p>
+</li>
+<li><p>\.   特殊字符，只匹配</p>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3></li>
+</ul>
+<p><strong>匹配数字3213.383219</strong></p>
+<p>如果写成\d\d\d\d.\d\d\d\d\d\d<br>那么当写成1234A456878 也同样可以匹配上  因为.代表了任意字符<br>所以应该\d\d\d\d.\d\d\d\d\d\d   加一个\令它原义输出</p>
+<p><strong>匹配杭州与宁波座机号码（0571|0574-XXXXXXXX)</strong></p>
+<p>057[14]-\d\d\d\d\d\d\d\d</p>
+<p><strong>请匹配18位身份证号</strong></p>
+<p>因为身份证第一位不能079。所以答案<br>[1234568]\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d[0-9xX]</p>
+<h2 id="多次重复匹配"><a href="#多次重复匹配" class="headerlink" title="多次重复匹配"></a>多次重复匹配</h2><ul>
+<li><p>A{3}  精准的N次匹配  （正确：AAA；错误：AA）</p>
+</li>
+<li><p>A{3,}  最少出现N次   （正确：AAA；错误：AA）</p>
+</li>
+<li><p>\d{3,5} 出现最大次数与最小次数，所以最大5，最小3 （正确：1234；错误：12）</p>
+</li>
+<li><p>\d*   可以出现零次至无限次相当于{0，}<br>（正确12345；）</p>
+</li>
+<li><p>\d+   最少出现一次，相当于{1，} （正确：12；错误： ）</p>
+</li>
+<li><p>\d?   至多出现一次相当于{0，1} （正确：1；错误：22）</p>
+<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3></li>
+</ul>
+<p><strong>验证短信验证码（6位数字)</strong></p>
+<p>\d{6}</p>
+<p><strong>请匹配全国座机号(区号3或者4位-电话号7或者8位)</strong></p>
+<p>\d{3,4}-\d{7,8}</p>
+<p><strong>匹配英文姓名</strong></p>
+<p>[A-Z][a-z]+\s[A-Z][a-z]*</p>
+<h2 id="定位匹配"><a href="#定位匹配" class="headerlink" title="定位匹配"></a>定位匹配</h2><ul>
+<li><p>^A.* 头匹配  （正确：ABC；错误：CBA）</p>
+</li>
+<li><p>.*A$ 尾匹配  （正确：CBA；错误：ABC）</p>
+</li>
+<li><p>^A.*A$  全字匹配 （正确：ACCCA;错误：ACCB）</p>
+<h2 id="贪婪模式与非贪婪模式"><a href="#贪婪模式与非贪婪模式" class="headerlink" title="贪婪模式与非贪婪模式"></a>贪婪模式与非贪婪模式</h2></li>
+<li><p>贪婪模式：在满足条件情况下尽可能多匹配</p>
+</li>
+</ul>
+<ul>
+<li><p>非贪婪模式：在满足条件情况下尽可能少匹配</p>
+<h5 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h5><p>对于 11221111  这个字符串</p>
+</li>
+</ul>
+<p>如果表达式是 \d{6,8} 会匹配到11221111</p>
+<p>但是如果是  \d{6,8}?  则会匹配到 112211</p>
+<p><strong>所以在正则表达时描述数量的地方后面加一个？ 即可变成非贪婪模式</strong></p>
+<h2 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h2><p>&lt;a href=”<a href="http://www.baidu.com&quot;\&gt;百度" target="_blank" rel="noopener">www.baidu.com&quot;\&gt;百度</a>&lt;/a&gt;&lt;a href=”<a href="http://www.sina.com&quot;\&gt;新浪" target="_blank" rel="noopener">www.sina.com&quot;\&gt;新浪</a>&lt;/a&gt;</p>
+<p>如果输入“.*”<br>匹配结果：”<a href="http://www.baidu.com&quot;&gt;百度" target="_blank" rel="noopener">www.baidu.com&quot;&gt;百度</a>&lt;a href=”<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a></p>
+<p>“.*？” （？写在描述数量的后面）<br>匹配结果：</p>
+<p>2处匹配</p>
+<p>“<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a></p>
+<p>“<a href="http://www.sina.com&quot;" target="_blank" rel="noopener">www.sina.com&quot;</a></p>
+<h2 id="表达式分组"><a href="#表达式分组" class="headerlink" title="表达式分组"></a>表达式分组</h2><p><strong>将子表达式进行包裹用小括号</strong></p>
+<h3 id="练习-3"><a href="#练习-3" class="headerlink" title="练习"></a>练习</h3><p><strong>匹配验证码(4或者6位)</strong></p>
+<p>(^\d{4}$)|(^\d{6}$)</p>
+<p><strong>匹配车牌号（冀A-U888G)</strong></p>
+<p>^([冀黑粤晋][A-Z])-([A-Z0-9]{5})$</p>
+<p><strong>匹配中文或英文姓名</strong></p>
+<p>(^[\u4e00-\u9fa5]{2,8}$)|(^[A-Z][a-z]+\s[A-Z][a-z]*$)</p>
+<h2 id="javascript-表单的验证"><a href="#javascript-表单的验证" class="headerlink" title="javascript 表单的验证"></a>javascript 表单的验证</h2><p>步骤：</p>
+<ul>
+<li>先定义正则表达式</li>
+<li>利用正则表达式的test()方法对要验证的字符串进行检查</li>
+<li>如果匹配则返回true  如果不匹配则返回false</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;#&quot;  id=&quot;frmInfo&quot;&gt;
+&lt;div id=&quot;err&quot; style=&quot;color:red&quot;&gt;
+&lt;/div&gt;
+&lt;div&gt;姓名:&lt;input id=&quot;name&quot; name=&quot;name&quot;/\&gt;&lt;/div&gt;
+&lt;div&gt;身份证:&lt;input id=&quot;idno&quot; name=&quot;idno&quot;/\&gt;&lt;/div&gt;
+&lt;div&gt;&lt;input type=&quot;submit&quot; &gt;&lt;/div&gt;
+&lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+document.getElementById(&quot;frmInfo&quot;).onsubmit=function()
+{
+//在JS中定义正则表达式对象只需要在/正则表达式/
+var regex1=/^[\u4e00-\u9fa5]{2,8}$/;
+var regex2=/^[1234568]\d{16}[0-9Xx]$/;
+var name=document.getElementById(&quot;name&quot;).value;
+var idno=document.getElementById(&quot;idno&quot;).value;
+if(regex1.test(name)==false)
+    {
+    document.getElementById(&quot;err&quot;).innerHTML=&quot;无效姓名&quot;;
+    return false;
+
+    }
+else if(regex2.test(idno)==false)
+    {    
+    document.getElementById(&quot;err&quot;).innerHTML=&quot;无效身份证&quot;;
+    return false;
+    }
+else
+    {
+    alert(&quot;正在提交&quot;);
+    return true;
+    }
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="java中web页面信息的提取"><a href="#java中web页面信息的提取" class="headerlink" title="java中web页面信息的提取"></a>java中web页面信息的提取</h2><p><strong>网页信息</strong></p>
+<pre><code>&lt;!DOCTYPEhtml&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;国际主要城市&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;国际主要城市&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;纽约NewYork&lt;/li&gt;
+        &lt;li&gt;伦敦London&lt;/li&gt;
+        &lt;li&gt;东京Tokyo&lt;/li&gt;
+        &lt;li&gt;巴黎Paris&lt;/li&gt;
+        &lt;li&gt;香港HongKong&lt;/li&gt;
+        &lt;li&gt;新加坡Singapore&lt;/li&gt;
+        &lt;li&gt;悉尼Sydney&lt;/li&gt;
+        &lt;li&gt;米兰Milano&lt;/li&gt;
+        &lt;li&gt;上海Shanghai&lt;/li&gt;
+        &lt;li&gt;北京Beijing&lt;/li&gt;
+        &lt;li&gt;马德里Madrid&lt;/li&gt;
+        &lt;li&gt;莫斯科Moscow&lt;/li&gt;
+        &lt;li&gt;首尔Seoul&lt;/li&gt;
+        &lt;li&gt;曼谷Bangkok&lt;/li&gt;
+        &lt;li&gt;多伦多Toronto&lt;/li&gt;
+        &lt;li&gt;布鲁塞尔Brussels&lt;/li&gt;
+        &lt;li&gt;芝加哥Chicago&lt;/li&gt;
+        &lt;li&gt;吉隆坡KualaLumpur&lt;/li&gt;
+        &lt;li&gt;孟买Mumbai&lt;/li&gt;
+        &lt;li&gt;华沙Warsaw&lt;/li&gt;
+        &lt;li&gt;圣保罗SaoPaulo&lt;/li&gt;
+        &lt;li&gt;苏黎世Zurich&lt;/li&gt;
+        &lt;li&gt;阿姆斯特丹Amsterdam&lt;/li&gt;
+        &lt;li&gt;墨西哥城MexicoCity&lt;/li&gt;
+        &lt;li&gt;雅加达Jakarta&lt;/li&gt;
+
+
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>下面的程序要从上面的网页中提取信息</p>
+<ul>
+<li><strong>首先我们要创建正则表达式对象：</strong></li>
+</ul>
+<p><strong>Pattern p=Pattern.compile(“&lt;li&gt;([\u4e00-\u9fa5]{2,})([A-Za-z]+)&lt;/li&gt;“);里面规定了正则表达式</strong></p>
+<ul>
+<li><strong>定义一个匹配器对象，Matcher m=p.matcher(content)</strong></li>
+</ul>
+<p><strong>matcher方法返回一个匹配器对象</strong></p>
+<ul>
+<li><p><strong>用m.find()方法判断是否可以匹配如果可以匹配则返回true ，否者返回false，对于那些成功匹配的可以输出出来</strong></p>
+</li>
+<li><p><strong>输出的时候  group(0)提取完整的字符串。如果正则表达式事先进行了分组，那么group(1)则输出第一个分组，group(2)则输出第二个分组，依次类推。</strong></p>
+</li>
+</ul>
+<p>具体代码如下： </p>
+<pre><code>import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Regex {
+public static void main(String[] args) throws IOException
+    {
+
+        StringBuilder content =new StringBuilder();
+        FileInputStream fis=new  FileInputStream(&quot;E:\\eclipse\\regex\\WebContent\\NewFile.html&quot;);
+        InputStreamReader isr=new  InputStreamReader(fis,&quot;UTF-8&quot;);//转换流
+        BufferedReader BufferedReader =new BufferedReader (isr);
+        String lineText=&quot;&quot;;
+        while((lineText = BufferedReader.readLine())!=null)
+        {
+            //System.out.println(lineText);
+            content.append(lineText);
+       }
+        BufferedReader.close();
+
+        Pattern p=Pattern.compile(&quot;&lt;li&gt;([\\u4e00-\\u9fa5]{2,})([A-Za-z]+)&lt;/li&gt;&quot;);//创建正则表达式对象
+        Matcher m=p.matcher(content);//matcher方法进行匹配返回一个匹配器对象
+
+       while(m.find())//在原始字符串查找如果匹配成功就可以提取出来
+       {
+           //用group(0) 提取完整字符串  
+     System.out.printf(m.group(1));
+
+     System.out.println(m.group(2));
+
+       }
+    }
+
+    }</code></pre>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/javaweb/" rel="tag"><i class="fa fa-google"></i> javaweb</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/09/06/AJAX项目--二级联动菜单的设置/" rel="next" title="AJAX项目-二级联动菜单的设置">
+                <i class="fa fa-chevron-left"></i> AJAX项目-二级联动菜单的设置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="苍糜">
+  <p class="site-author-name" itemprop="name">苍糜</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/cangmis" title="GitHub &rarr; https://github.com/cangmis" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/1976045181" title="Weibo &rarr; https://weibo.com/u/1976045181" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是正则表达式"><span class="nav-number">1.</span> <span class="nav-text">什么是正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符范围的匹配"><span class="nav-number">1.1.</span> <span class="nav-text">字符范围的匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习："><span class="nav-number">2.</span> <span class="nav-text">练习：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">3.</span> <span class="nav-text">元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">3.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多次重复匹配"><span class="nav-number">4.</span> <span class="nav-text">多次重复匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#练习-1"><span class="nav-number">4.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位匹配"><span class="nav-number">5.</span> <span class="nav-text">定位匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪婪模式与非贪婪模式"><span class="nav-number">6.</span> <span class="nav-text">贪婪模式与非贪婪模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#举例："><span class="nav-number">6.0.0.1.</span> <span class="nav-text">举例：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-2"><span class="nav-number">7.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式分组"><span class="nav-number">8.</span> <span class="nav-text">表达式分组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#练习-3"><span class="nav-number">8.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-表单的验证"><span class="nav-number">9.</span> <span class="nav-text">javascript 表单的验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">9.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java中web页面信息的提取"><span class="nav-number">10.</span> <span class="nav-text">java中web页面信息的提取</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">苍糜</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+      
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
