@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[leetcode-两数之和]]></title>
     <url>%2F2019%2F09%2F08%2Fleetcode-%E4%B8%A4%E4%B8%AA%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
-    <content type="text"><![CDATA[###开始刷leetcode啦！加油加油！题目 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例:给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1] 思想刚开始想的特别简单就是在给定数组中进行遍历，两层for循环看看两个数相加是否可以==target，如果有的话直接返回当时的ij值 代码如下public class Solution { public int[] twoSum(int[] nums, int target) { int[] arr=new int[2]; for(int i=0;i&lt;nums.length-1;i++){ for(int j=i+1;j&lt;nums.length;j++){ if(nums[i]+nums[j]==target){ return new int[]{i,j}; } } } return arr; } }当时显示的是：用时54ms 内存消耗38.4MB； 后来又看到了大佬的代码 这道题的标签时数组和哈希表我当时并没有想到可以用hashMap;看完大佬的代码才反应过来这样只需要一层循环，时间肯定可以减少不少 思路：先建一个map集合。然后遍历整个nums数组，在该组数中先看每一个nums[i]的值，如果target-nums[i]存在，就证明这两个数相加等于target.如果不存在就直接保存num[i]和对应的索引值i，这点用的比较巧妙。一边找一边存，每次寻找只需要寻找之前遍历过的nums[]里面的值,看是否有等于target-nums[i]即可。 代码如下：public class Solution { public int[] twoSum(int[] nums, int target) { Map&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;(); for(int i=0;i&lt;nums.length;i++){ Integer index=map.get(target-nums[i]); if(index==null){ map.put(nums[i],i); }else{ return new int[]{i,index}; } } return new int[]{0,0}; } }此时显示执行用时9ms，内存消耗39Mz，时间上大大减少了。代码算法优化简直太重要啦]]></content>
+    <content type="text"><![CDATA[开始刷leetcode啦！加油加油！ 题目 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例:给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1] 思想刚开始想的特别简单就是在给定数组中进行遍历，两层for循环看看两个数相加是否可以==target，如果有的话直接返回当时的ij值 代码如下public class Solution { public int[] twoSum(int[] nums, int target) { int[] arr=new int[2]; for(int i=0;i&lt;nums.length-1;i++){ for(int j=i+1;j&lt;nums.length;j++){ if(nums[i]+nums[j]==target){ return new int[]{i,j}; } } } return arr; } }当时显示的是：用时54ms 内存消耗38.4MB； 后来又看到了大佬的代码 这道题的标签时数组和哈希表我当时并没有想到可以用hashMap;看完大佬的代码才反应过来这样只需要一层循环，时间肯定可以减少不少 思路：先建一个map集合。然后遍历整个nums数组，在该组数中先看每一个nums[i]的值，如果target-nums[i]存在，就证明这两个数相加等于target.如果不存在就直接保存num[i]和对应的索引值i，这点用的比较巧妙。一边找一边存，每次寻找只需要寻找之前遍历过的nums[]里面的值,看是否有等于target-nums[i]即可。 代码如下：public class Solution { public int[] twoSum(int[] nums, int target) { Map&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;(); for(int i=0;i&lt;nums.length;i++){ Integer index=map.get(target-nums[i]); if(index==null){ map.put(nums[i],i); }else{ return new int[]{i,index}; } } return new int[]{0,0}; } }此时显示执行用时9ms，内存消耗39Mz，时间上大大减少了。代码算法优化简直太重要啦]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -76,22 +76,5 @@
       <tags>
         <tag>nexT配置优化</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[苍糜]]></title>
-    <url>%2F2019%2F08%2F27%2F%E8%8B%8D%E7%B3%9C%2F</url>
-    <content type="text"><![CDATA[这是 H1 列表1 列表2 a 子列表 b 子列表 列表3 ca 字体是斜线的 字体是加粗的 &lt;html&gt;&lt;/html&gt; 1234&lt;html&gt;&lt;/html&gt;&lt;html&gt;&lt;/html&gt;&lt;html&gt;&lt;/html&gt;&lt;html&gt;&lt;/html&gt; 引用]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>导航</tag>
-        <tag>分享</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F08%2F21%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. hello hexoCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
