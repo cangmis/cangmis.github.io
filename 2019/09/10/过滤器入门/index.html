@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="什么是过滤器FilterFilter就是英文的过滤器，WEB开发人员通过Filter技术，对web服务器管理的所有web资源：例如Jsp, Servlet, 静态图片文件或静态 html 文件等进行拦截，从而实现一些特殊的功能。例如实现URL级别的权限访问控制、过滤敏感词汇、压缩响应信息等一些高级功能。 如何实现Filter1.创建的java类实现Filter接口. Filter接口中有三个方法：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cangmi">
+<meta property="og:url" content="http://cangmis.github.io/2019/09/10/过滤器入门/index.html">
+<meta property="og:site_name" content="Cangmi">
+<meta property="og:description" content="什么是过滤器FilterFilter就是英文的过滤器，WEB开发人员通过Filter技术，对web服务器管理的所有web资源：例如Jsp, Servlet, 静态图片文件或静态 html 文件等进行拦截，从而实现一些特殊的功能。例如实现URL级别的权限访问控制、过滤敏感词汇、压缩响应信息等一些高级功能。 如何实现Filter1.创建的java类实现Filter接口. Filter接口中有三个方法：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-10T15:15:52.109Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cangmi">
+<meta name="twitter:description" content="什么是过滤器FilterFilter就是英文的过滤器，WEB开发人员通过Filter技术，对web服务器管理的所有web资源：例如Jsp, Servlet, 静态图片文件或静态 html 文件等进行拦截，从而实现一些特殊的功能。例如实现URL级别的权限访问控制、过滤敏感词汇、压缩响应信息等一些高级功能。 如何实现Filter1.创建的java类实现Filter接口. Filter接口中有三个方法：">
+  <link rel="canonical" href="http://cangmis.github.io/2019/09/10/过滤器入门/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | Cangmi</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/cangmis" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cangmi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cangmis.github.io/2019/09/10/过滤器入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="苍糜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cangmi">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-10 21:05:42 / 修改时间：23:15:52" itemprop="dateCreated datePublished" datetime="2019-09-10T21:05:42+08:00">2019-09-10</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="什么是过滤器"><a href="#什么是过滤器" class="headerlink" title="什么是过滤器"></a>什么是过滤器</h1><h1 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h1><p>Filter就是英文的过滤器，WEB开发人员通过Filter技术，对web服务器管理的所有web资源：例如Jsp, Servlet, 静态图片文件或静态 html 文件等进行拦截，从而实现一些特殊的功能。例如实现URL级别的权限访问控制、过滤敏感词汇、压缩响应信息等一些高级功能。</p>
+<h2 id="如何实现Filter"><a href="#如何实现Filter" class="headerlink" title="如何实现Filter"></a>如何实现Filter</h2><h3 id="1-创建的java类实现Filter接口"><a href="#1-创建的java类实现Filter接口" class="headerlink" title="1.创建的java类实现Filter接口."></a>1.创建的java类实现Filter接口.</h3><ul>
+<li><p>Filter接口中有三个方法：</p>
+<ul>
+<li>default void init(FilterConfig filterConfig)</li>
+<li>void doFilter(ServletRequest var1, ServletResponse var2, FilterChain var3)</li>
+<li>default void destroy()</li>
+</ul>
+</li>
+</ul>
+<p>其中init初始化和销毁destroy是默认实现的，我们无需重写</p>
+<p>doFilter 是一个核心方法，我们必须要实现。</p>
+<h4 id="关于doFilter方法："><a href="#关于doFilter方法：" class="headerlink" title="关于doFilter方法："></a>关于doFilter方法：</h4><p>doFilter方法是filter接口中的核心方法，一旦创建完该过滤器的实例之后，会执行dofilter方法。主要有三个参数，第一个参数是一个ServletRequest对象，HttpServletRequest继承于此接口，当用户请求某个拦截器的时候，检测到此请求存在过滤器，于是会封装好本次请求的相关数据，传递给dofilter的ServletRequest参数，ServletResponse参数的来源和ServletRequest是一样的，都是由客户端封装过来的。第三个参数</p>
+<h3 id="2-在web-xml文件中对filter类进行注册。并设置它所要拦截的资源"><a href="#2-在web-xml文件中对filter类进行注册。并设置它所要拦截的资源" class="headerlink" title="2.在web.xml文件中对filter类进行注册。并设置它所要拦截的资源"></a>2.在web.xml文件中对filter类进行注册。并设置它所要拦截的资源</h3><pre><code>&lt;!--配置过滤器--&gt;
+  &lt;filter&gt;
+      &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+      &lt;filter-class&gt;filter.CharacterEncoding&lt;/filter-class&gt;
+  &lt;/filter&gt;
+
+ &lt;!--映射过滤器--&gt;
+  &lt;filter-mapping&gt;
+     &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+     &lt;!--“/*”表示拦截所有的请求 --&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;</code></pre><h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><pre><code>/**
+ * 字符集编码过滤器
+ */
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class CharacterEncodingFilter implements Filter {
+
+
+
+    @Override
+    public void destroy() {
+System.out.println(&quot;----过滤器销毁----&quot;);
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+
+         request.setCharacterEncoding(&quot;UTF-8&quot;);
+
+        // System.out.println(&quot;characterEncodingFilter 请求预 处理&quot;);//测试过滤器（链）工作流程使用
+        chain.doFilter(request, response);//让目标资源执行放行
+        // System.out.println(&quot;characterEncodingFilter 响应后处理&quot;);//测试过滤器（链）工作流程使用
+
+    }
+
+    @Override
+    public void init(FilterConfig config) throws ServletException {
+        System.out.println(&quot;----过滤器初始化----&quot;);
+
+    }
+
+
+
+}</code></pre><p><strong>chain.doFilter(request, response)</strong><br><strong>关于过滤链：</strong></p>
+<p>在一个web应用中，可以开发编写多个Filter，这些Filter组合起来称之为一个Filter链。<br>Web服务器根据Filter在web.xml文件中的注册顺序，决定先调用哪个Filter，当第一个Filter的doFilter方法被调用时，web服务器会创建一个代表Filter链的FilterChain对象传递给该方法。在doFilter方法中，开发人员如果调用了FilterChain对象的doFilter方法，则web服务器会检查FilterChain对象中是否还有filter，如果有，则调用第2个filter，如果没有，则调用目标资源。</p>
+<p>xml配置：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;3.1&quot;&gt;
+  &lt;display-name&gt;FilterDemo&lt;/display-name&gt;
+  &lt;welcome-file-list&gt;
+
+    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+
+  &lt;/welcome-file-list&gt;
+  &lt;!--  过滤器注册--&gt;
+  &lt;filter&gt;
+  &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+  &lt;filter-class&gt;filter.CharacterEncoding&lt;/filter-class&gt;
+  &lt;/filter&gt;
+
+  &lt;filter-mapping&gt;
+  &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;
+
+  &lt;/web-app&gt;</code></pre><h2 id="Fliter的生命周期"><a href="#Fliter的生命周期" class="headerlink" title="Fliter的生命周期"></a>Fliter的生命周期</h2><ul>
+<li>web应用程序启动时，web服务器创建Filter的实例对象。以及对象的初始化</li>
+<li>当请求访问与过滤器关联的Web资源时，过滤器拦截请求，完成指定的功能</li>
+<li>Filter对象创建会驻留在内存，在web应用移除或者服务器停止的时候才会销毁</li>
+<li>过滤器的创建和销毁由服务器负责。</li>
+</ul>
+<h2 id="FilterConfig接口"><a href="#FilterConfig接口" class="headerlink" title="FilterConfig接口"></a>FilterConfig接口</h2><p>用户在配置filter时，可以使用<init-param>为filter配置一些初始化参数，当web容器实例化Filter对象，调用其init方法时，会把封装了filter初始化参数的filterConfig对象传递进来。因此开发人员在编写filter时，通过filterConfig对象的方法，就可获得：</init-param></p>
+<ul>
+<li>String getFilterName()：得到filter的名称。</li>
+<li>String getInitParameter(String name)： 返回在部署描述中指定名称的初始化参数的值。如果不存在返回null.</li>
+<li>Enumeration getInitParameterNames()：返回过滤器的所有初始化参数的名字的枚举集合。</li>
+<li>public ServletContext getServletContext()：返回Servlet上下文对象的引用。</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例:"></a>实例:</h3><pre><code>import java.io.IOException;
+import java.util.Enumeration;
+ import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+ import javax.servlet.FilterConfig;
+ import javax.servlet.ServletException;
+ import javax.servlet.ServletRequest;
+ import javax.servlet.ServletResponse;
+
+ public class FilterDemo02 implements Filter {
+
+    /* 过滤器初始化
+     * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
+      */
+   @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+         System.out.println(&quot;----过滤器初始化----&quot;);
+
+       //得到过滤器的名字
+         String filterName = filterConfig.getFilterName();
+       //得到在web.xml文件中配置的初始化参数
+        String initParam1 = filterConfig.getInitParameter(&quot;name&quot;);
+        String initParam2 = filterConfig.getInitParameter(&quot;like&quot;);
+        //返回过滤器的所有初始化参数的名字的枚举集合。
+         Enumeration&lt;String&gt; initParameterNames = filterConfig.getInitParameterNames();
+
+         System.out.println(filterName);
+         System.out.println(initParam1);
+       System.out.println(initParam2);
+         while (initParameterNames.hasMoreElements()) {
+             String paramName = (String) initParameterNames.nextElement();
+             System.out.println(paramName);
+         }
+     }
+
+     @Override
+     public void doFilter(ServletRequest request, ServletResponse response,
+         System.out.println(&quot;FilterDemo02执行前！！！&quot;);
+         chain.doFilter(request, response);  //让目标资源执行，放行
+       System.out.println(&quot;FilterDemo02执行后！！！&quot;);
+    }
+
+    @Override
+     public void destroy() {
+         System.out.println(&quot;----过滤器销毁----&quot;);
+     }
+ }</code></pre><p>xml 配置：</p>
+<pre><code>&lt;filter&gt;
+ &lt;filter-name&gt;FilterDemo02&lt;/filter-name&gt;
+   &lt;!--配置FilterDemo02过滤器的初始化参数--&gt;
+     &lt;init-param&gt;
+      &lt;description&gt;配置FilterDemo02过滤器的初始化参数&lt;/description&gt;
+     &lt;param-value&gt;gacl&lt;/param-value&gt;
+      &lt;/init-param&gt;
+     &lt;init-param&gt;
+      &lt;description&gt;配置FilterDemo02过滤器的初始化参数&lt;/description&gt;
+      &lt;param-name&gt;like&lt;/param-name&gt;
+       &lt;param-value&gt;java&lt;/param-value&gt;
+     &lt;/init-param&gt;
+     &lt;/filter&gt;
+       &lt;filter-mapping&gt;
+      &lt;filter-name&gt;FilterDemo02&lt;/filter-name&gt;
+     &lt;!--“/*”表示拦截所有的请求 --&gt;
+     &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;</code></pre><h2 id="Fileter-的部署："><a href="#Fileter-的部署：" class="headerlink" title="Fileter 的部署："></a>Fileter 的部署：</h2><ul>
+<li><p>注册Filter</p>
+</li>
+<li><p>映射Filter</p>
+<h3 id="注册Filter："><a href="#注册Filter：" class="headerlink" title="注册Filter："></a>注册Filter：</h3>  <filter>
+       <description>FilterDemo02过滤器</description>
+        <filter-name>FilterDemo02</filter-name>
+         <filter-class>me.gacl.web.filter.FilterDemo02</filter-class>
+           <!--配置FilterDemo02过滤器的初始化参数-->
+         <init-param>
+          <description>配置FilterDemo02过滤器的初始化参数</description>
+           <param-name>name</param-name>
+           <param-value>gacl</param-value>
+            </init-param>
+         <init-param>
+           <description>配置FilterDemo02过滤器的初始化参数</description>
+            <param-name>like</param-name>
+             <param-value>java</param-value>
+          </init-param>
+   </filter>
+</li>
+<li><p>&lt;description&gt; 用于添加描述信息，该元素的内容可为空，&lt;description&gt;可以不配置。</p>
+</li>
+<li><p><filter-name>用于为过滤器指定一个名字，该元素的内容不能为空。</filter-name></p>
+</li>
+<li><p><filter-class>元素用于指定过滤器的完整的限定类名。</filter-class></p>
+</li>
+<li><p><init-param>元素用于为过滤器指定初始化参数，它的子元素<param-name>指定参数的名字，<param-value>指定参数的值。在过滤器中，可以使用FilterConfig接口对象来访问初始化参数。如果过滤器不需要指定初始化参数，那么<init-param>元素可以不配置。</init-param></param-value></param-name></init-param></p>
+<h3 id="映射Filter"><a href="#映射Filter" class="headerlink" title="映射Filter"></a>映射Filter</h3><pre><code>  &lt;!--映射过滤器--&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;FilterDemo02&lt;/filter-name&gt;
+ &lt;!--“/*”表示拦截所有的请求 --&gt;
+   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;</code></pre></li>
+<li><p><filter-mapping>元素用于设置一个 Filter 所负责拦截的资源。一个Filter拦截的资源可通过两种方式来指定：Servlet 名称和资源访问的请求路径</filter-mapping></p>
+</li>
+<li><p><filter-name>子元素用于设置filter的注册名称。该值必须是在<filter>元素中声明过的过滤器的名字</filter></filter-name></p>
+</li>
+<li><p><url-pattern>设置 filter 所拦截的请求路径(过滤器关联的URL样式)</url-pattern></p>
+</li>
+<li><p><servlet-name>指定过滤器所拦截的Servlet名称。</servlet-name></p>
+</li>
+<li><p><dispatcher>指定过滤器所拦截的资源被 Servlet 容器调用的方式，可以是REQUEST,INCLUDE,FORWARD和ERROR之一，默认REQUEST。用户可以设置多个<dispatcher> 子元素用来指定 Filter 对资源的多种调用方式进行拦截。</dispatcher></dispatcher></p>
+<h3 id="java的4种过滤器："><a href="#java的4种过滤器：" class="headerlink" title="java的4种过滤器："></a>java的4种过滤器：</h3></li>
+<li><p>REQUEST：当用户直接访问页面时，Web容器将会调用过滤器。如果目标资源是通过RequestDispatcher的include()或forward()方法访问时，那么该过滤器就不会被调用。</p>
+</li>
+<li><p>INCLUDE：如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。除此之外，该过滤器不会被调用。</p>
+</li>
+<li><p>FORWARD：如果目标资源是通过RequestDispatcher的forward()方法访问时，那么该过滤器将被调用，除此之外，该过滤器不会被调用。</p>
+</li>
+<li><p>ERROR：如果目标资源是通过声明式异常处理机制调用时，那么该过滤器将被调用。除此之外，过滤器不会被调用。</p>
+</li>
+</ul>
+<p>配置如下：</p>
+<pre><code>&lt;filter-mapping&gt;
+  &lt;filter-name&gt;testFilter&lt;/filter-name&gt;
+  &lt;url-pattern&gt;/index.jsp&lt;/url-pattern&gt;
+  &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
+  &lt;dispatcher&gt;FORWARD&lt;/dispatcher&gt;
+ &lt;/filter-mapping&gt;</code></pre><p>详见<a href https: baike.so.com doc 1798876-1902224.html"">java过滤器</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/09/08/leetcode-两个数之和/" rel="next" title="leetcode-两数之和">
+                <i class="fa fa-chevron-left"></i> leetcode-两数之和
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="苍糜">
+  <p class="site-author-name" itemprop="name">苍糜</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/cangmis" title="GitHub &rarr; https://github.com/cangmis" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/1976045181" title="Weibo &rarr; https://weibo.com/u/1976045181" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是过滤器"><span class="nav-number">1.</span> <span class="nav-text">什么是过滤器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter"><span class="nav-number">2.</span> <span class="nav-text">Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现Filter"><span class="nav-number">2.1.</span> <span class="nav-text">如何实现Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建的java类实现Filter接口"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.创建的java类实现Filter接口.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于doFilter方法："><span class="nav-number">2.1.1.1.</span> <span class="nav-text">关于doFilter方法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在web-xml文件中对filter类进行注册。并设置它所要拦截的资源"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.在web.xml文件中对filter类进行注册。并设置它所要拦截的资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例："><span class="nav-number">2.1.3.</span> <span class="nav-text">实例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fliter的生命周期"><span class="nav-number">2.2.</span> <span class="nav-text">Fliter的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FilterConfig接口"><span class="nav-number">2.3.</span> <span class="nav-text">FilterConfig接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">2.3.1.</span> <span class="nav-text">实例:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fileter-的部署："><span class="nav-number">2.4.</span> <span class="nav-text">Fileter 的部署：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册Filter："><span class="nav-number">2.4.1.</span> <span class="nav-text">注册Filter：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#映射Filter"><span class="nav-number">2.4.2.</span> <span class="nav-text">映射Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java的4种过滤器："><span class="nav-number">2.4.3.</span> <span class="nav-text">java的4种过滤器：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">苍糜</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+      
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
