@@ -59,19 +59,19 @@
   };
 </script>
 
-  <meta name="description" content="开始刷leetcode啦！加油加油！ 题目 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。   示例:给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9">
-<meta name="keywords" content="-leetcode">
+  <meta name="description" content="要求: 通过过滤器实现登陆控制，未登陆用户不能访问系统首页 用户登陆，将登录名存储到session中 登陆监听器监听session属性中登陆值属性变化 若登陆用户用户名已登陆到系统，清除前次登陆信息  首先写登陆页面index.jsp，构造登陆页面的表单，用户输入用户名和密码等 &amp;lt;form action=&amp;quot;login.jsp&amp;quot; method=&amp;quot;post&amp;quot">
+<meta name="keywords" content="监听器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-两数之和">
-<meta property="og:url" content="http://cangmis.github.io/2019/09/08/leetcode-两个数之和/index.html">
+<meta property="og:title" content="监听器项目（用户登录控制）">
+<meta property="og:url" content="http://cangmis.github.io/2019/09/15/监听器项目/index.html">
 <meta property="og:site_name" content="Cangmi">
-<meta property="og:description" content="开始刷leetcode啦！加油加油！ 题目 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。   示例:给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9">
+<meta property="og:description" content="要求: 通过过滤器实现登陆控制，未登陆用户不能访问系统首页 用户登陆，将登录名存储到session中 登陆监听器监听session属性中登陆值属性变化 若登陆用户用户名已登陆到系统，清除前次登陆信息  首先写登陆页面index.jsp，构造登陆页面的表单，用户输入用户名和密码等 &amp;lt;form action=&amp;quot;login.jsp&amp;quot; method=&amp;quot;post&amp;quot">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T14:10:17.769Z">
+<meta property="og:updated_time" content="2019-09-16T01:48:09.746Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-两数之和">
-<meta name="twitter:description" content="开始刷leetcode啦！加油加油！ 题目 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。   示例:给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9">
-  <link rel="canonical" href="http://cangmis.github.io/2019/09/08/leetcode-两个数之和/">
+<meta name="twitter:title" content="监听器项目（用户登录控制）">
+<meta name="twitter:description" content="要求: 通过过滤器实现登陆控制，未登陆用户不能访问系统首页 用户登陆，将登录名存储到session中 登陆监听器监听session属性中登陆值属性变化 若登陆用户用户名已登陆到系统，清除前次登陆信息  首先写登陆页面index.jsp，构造登陆页面的表单，用户输入用户名和密码等 &amp;lt;form action=&amp;quot;login.jsp&amp;quot; method=&amp;quot;post&amp;quot">
+  <link rel="canonical" href="http://cangmis.github.io/2019/09/15/监听器项目/">
 
 
 <script id="page.configurations">
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>leetcode-两数之和 | Cangmi</title>
+  <title>监听器项目（用户登录控制） | Cangmi</title>
   
 
 
@@ -245,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cangmis.github.io/2019/09/08/leetcode-两个数之和/">
+    <link itemprop="mainEntityOfPage" href="http://cangmis.github.io/2019/09/15/监听器项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="苍糜">
@@ -259,7 +259,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">leetcode-两数之和
+          <h1 class="post-title" itemprop="name headline">监听器项目（用户登录控制）
 
               
             
@@ -279,11 +279,21 @@
                 
               
 
-              <time title="创建时间：2019-09-08 22:30:28 / 修改时间：22:10:17" itemprop="dateCreated datePublished" datetime="2019-09-08T22:30:28+08:00">2019-09-08</time>
+              <time title="创建时间：2019-09-15 22:15:31" itemprop="dateCreated datePublished" datetime="2019-09-15T22:15:31+08:00">2019-09-15</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-16 09:48:09" itemprop="dateModified" datetime="2019-09-16T09:48:09+08:00">2019-09-16</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -294,7 +304,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javaWeb/" itemprop="url" rel="index"><span itemprop="name">javaWeb</span></a></span>
 
                 
                 
@@ -322,47 +332,243 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="开始刷leetcode啦！加油加油！"><a href="#开始刷leetcode啦！加油加油！" class="headerlink" title="开始刷leetcode啦！加油加油！"></a>开始刷leetcode啦！加油加油！</h3><hr>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
-<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
-</blockquote>
-<blockquote>
-<p>示例:<br>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9</p>
-</blockquote>
-<blockquote>
-<p>所以返回 [0, 1]</p>
-</blockquote>
-<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>刚开始想的特别简单就是在给定数组中进行遍历，两层for循环看看两个数相加是否可以==target，如果有的话直接返回当时的ij值</p>
-<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>public class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        int[] arr=new int[2];
-        for(int i=0;i&lt;nums.length-1;i++){
-            for(int j=i+1;j&lt;nums.length;j++){
-                if(nums[i]+nums[j]==target){
-                    return new int[]{i,j};
-                }
-            }
-        }
-        return arr;
+        <h2 id="要求"><a href="#要求" class="headerlink" title="要求:"></a><strong>要求:</strong></h2><ul>
+<li>通过过滤器实现登陆控制，未登陆用户不能访问系统首页</li>
+<li>用户登陆，将登录名存储到session中</li>
+<li>登陆监听器监听session属性中登陆值属性变化</li>
+<li>若登陆用户用户名已登陆到系统，清除前次登陆信息</li>
+</ul>
+<p>首先写登陆页面index.jsp，构造登陆页面的表单，用户输入用户名和密码等</p>
+<pre><code>&lt;form action=&quot;login.jsp&quot; method=&quot;post&quot;&gt;
+    &lt;h1&gt;系统登录&lt;/h1&gt;
+    &lt;label&gt;
+    &lt;span&gt;用户名:&lt;/span&gt;
+    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;username&quot;/&gt;
+    &lt;/label&gt;
+
+    &lt;label&gt;
+    &lt;span&gt;密码:&lt;/span&gt;
+    &lt;input id=&quot;password&quot; type=&quot;password&quot; name=&quot;password&quot;/&gt;
+    &lt;/label&gt;
+
+    &lt;span&gt;&amp;nbsp;&lt;/span&gt;
+
+    &lt;label&gt;
+    &lt;input type=&quot;submit&quot; class=&quot;button&quot; value=&quot;登录&quot;/&gt;
+    &lt;/label&gt;
+
+  &lt;/form&gt;</code></pre><p>在xml中将index.jsp设成默认首页、</p>
+<pre><code>&lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+  &lt;/welcome-file-list&gt;</code></pre><p>因为表单提交到login.jsp中 所以我们要对login.jsp进行代码书写<br>我们为了实现登陆控制：没有登陆的用户不可以进入主页。<br>我们要在login.jsp中实现将用户的姓名和密码放到session中。以便在后续过滤器的过滤。</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+
+&lt;%
+String username = request.getParameter(&quot;username&quot;);
+String password = request.getParameter(&quot;password&quot;);
+
+
+session.setAttribute(&quot;loginUser&quot;, username);//登录完成，将登录用户名存储至session对象
+
+response.sendRedirect(request.getContextPath()+&quot;/main.jsp&quot;);
+%&gt;</code></pre><p>此时跳转到main.jsp中  也就是我们登陆成功后即将要访问的首页</p>
+<p>那么现在我们就要解决一个很关键的问题。如果我没有输入用户名和密码我可以进到这个首页吗？答案当然是否定的，所以我们就需要对main.jsp进行过滤。</p>
+<p>我们如何进行过滤？我们可以获取我们在login中session中存储的属性获取用户姓名<br>如果姓名字符串长度为0或者为空那么我们可以得出用户并没有输入有效得用户名，他们是没有进入首页得资格的。此时我们就要进行过滤操作，将页面直接跳转到登陆页面并进行标记，告诉用户要先进行登陆</p>
+<p><strong>代码以及书写步骤：</strong></p>
+<p>创建一个类实现过滤器接口。<br>创建对象 获取session中得属性值，判断是否为null或者长度为0，如果不是，放行。chain.doFilter方法告诉浏览器过滤结束放行。如果是，就回到登录页民重新登陆<br>具体代码：</p>
+<pre><code>package com.imooc.filter;
+
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 
+ * @author lv
+ *
+ */
+public class SessionFilter implements Filter {
+
+    @Override
+    public void destroy() {
+
     }
-}</code></pre><p>当时显示的是：用时54ms 内存消耗38.4MB；</p>
-<p>后来又看到了大佬的代码</p>
-<p>这道题的标签时数组和哈希表我当时并没有想到可以用hashMap;<br>看完大佬的代码才反应过来这样只需要一层循环，时间肯定可以减少不少</p>
-<p><strong>思路</strong>：先建一个map集合。<br>然后遍历整个nums数组，在该组数中先看每一个nums[i]的值，如果target-nums[i]存在，就证明这两个数相加等于target.如果不存在就直接保存num[i]和对应的索引值i，这点用的比较巧妙。一边找一边存，每次寻找只需要寻找之前遍历过的nums[]里面的值,看是否有等于target-nums[i]即可。</p>
-<h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre><code>public class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        Map&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;();
-        for(int i=0;i&lt;nums.length;i++){
-            Integer index=map.get(target-nums[i]);
-            if(index==null){
-                map.put(nums[i],i);
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletRequest hrequest = (HttpServletRequest)request;
+        HttpServletResponse hresponse = (HttpServletResponse)response;
+
+        String loginUser = (String)hrequest.getSession().getAttribute(&quot;loginUser&quot;);
+
+        if(loginUser==null||loginUser.length() == 0)
+        {
+
+
+            hresponse.sendRedirect(hrequest.getContextPath()+&quot;/index.jsp?flag=1&quot;);
+            return;
+
+        }else{
+            chain.doFilter(request, response);
+            return;
+        }
+
+    }
+
+    @Override
+    public void init(FilterConfig arg0) throws ServletException {
+
+    }
+
+}</code></pre><p>别忘了要在xml中注册过滤器</p>
+<pre><code>&lt;filter&gt;
+      &lt;filter-name&gt;sessionFilter&lt;/filter-name&gt;
+      &lt;filter-class&gt;com.imooc.filter.SessionFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+
+  &lt;filter-mapping&gt;
+      &lt;filter-name&gt;sessionFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/main.jsp&lt;/url-pattern&gt;</code></pre><p>我们此时返回index.jsp中添加一句话。告诉用户重新登陆</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+var flag = &apos;&lt;%=flag %&gt;&apos;;
+if(&quot;1&quot;==flag){
+    alert(&quot;你尚未登陆，或者账号在异地登陆，请重新登陆！&quot;);
+}
+&lt;/script&gt;</code></pre><p>到现在我们就完成了第一个目标 实现了如果用户不登录就无法访问主页的功能，利用的是过滤器的相关知识。<br>那么我们怎么判断该用户登陆过，怎么实现用户信息的存储，怎么实现对已经登陆的用户实现销毁呢<br>我们此时要借助java中的单例模式 保证缓存中只有一个对象<br>单例模式的要点：构造函数的私有化</p>
+<p>我们首先建立私有化的构造函数，然后创建一个静态变量，保证只有一个该变量<br>在创建一个共有的静态方法，返回静态变量，返回只有一个。<br>HttpSession对象在创建后，都会有唯一的ID与其他session做标志区别<br>但是不支持通过sessionId获取Session对象<br>我们可以定义两份存储。第一个是存储sessionid和用户登陆名的映射关系<br>第二个是 session和sessionid的映射关系</p>
+<pre><code>package com.imooc.cache;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+/**
+单例模式
+ * @author lv
+ *
+ */
+public class LoginCache {
+    private static LoginCache instance = new LoginCache();
+
+
+    //登陆名与会话id值
+    private Map&lt;String,String&gt; loginUserSession = new HashMap&lt;String,String&gt;();
+    private Map&lt;String,HttpSession&gt; loginSession = new HashMap&lt;String,HttpSession&gt;();
+    //sessionid 和session本身
+    //通过用户名获得sessionId  通过sessionid  获得对应的session
+    private LoginCache(){
+
+    }
+
+    public static LoginCache getInstance(){//获取实例对象
+        return instance;
+    }
+    /**
+     * 
+     * @param username
+     * @return
+     */
+    public String getSessionIdByUsername(String username){//sessionid
+        return loginUserSession.get(username);
+    }
+
+    /**
+     *
+     * @param sessionId
+     * @return
+     */
+    public HttpSession getSessionBySessionId(String sessionId){//session
+        return loginSession.get(sessionId);
+    }
+
+    /**
+     * 
+     * @param username
+     * @param sessionId
+     */
+    public void setSessionIdByUserName(String username,String sessionId){//存储操作
+        loginUserSession.put(username, sessionId);
+    }
+
+    /**
+
+     * @param sessionId
+     * @param session
+     */
+    public void setSessionBySessionId(String sessionId,HttpSession session){//存储
+        loginSession.put(sessionId, session);
+    }
+
+}</code></pre><p>存储完了下一步就是对每个登陆的对象进行判断看是否之前登陆过<br>此时就要用到监听器的知识。具体用何种监听器呢。<br>每次用户登陆时都要创建一个session属性，所以我们可以使用HttpSessionAttribute Listener  来监听实例对象中属性的创建</p>
+<p>创建一个类实现 HttpSessionAttributeListener接口<br>然后在 attributeAdded(HttpSessionBindingEvent hsbe)方法中<br>获取属性名，属性值，再获取当前的session和sessionid</p>
+<p>在之前存储用户信息的缓冲区中根据用户名看是否能获取sessionid，如果获取到了证明用户已经登陆，此时要清除旧用户的登陆信息<br>session.invalidate();该方法可以实现注销操作<br>此时再将新用户的 用户名 sessionid  session  他们三互相的映射关系存储到相应的集合中，完成用户的新登陆</p>
+<pre><code>package com.imooc.listener;
+
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionAttributeListener;
+import javax.servlet.http.HttpSessionBindingEvent;
+
+import com.imooc.cache.LoginCache;
+/**
+ *
+     * @author lv
+     *
+     */
+public class LoginSessionListener implements HttpSessionAttributeListener {
+
+    private static final String LOGIN_USER=&quot;loginUser&quot;;
+
+    @Override
+    public void attributeAdded(HttpSessionBindingEvent hsbe) {
+        String attrName = hsbe.getName();
+
+        if(LOGIN_USER.equals(attrName)){
+            String attrVal = (String)hsbe.getValue();
+            HttpSession session = hsbe.getSession();
+            String sessionId = session.getId();
+
+            String sessionId2 = LoginCache.getInstance().getSessionIdByUsername(attrVal);//ֵ
+            if(null == sessionId2){
+
             }else{
-                return new int[]{i,index};
+                HttpSession session2 = LoginCache.getInstance().getSessionBySessionId(sessionId2);
+                session2.invalidate();//注销信息  
             }
+
+
+            LoginCache.getInstance().setSessionIdByUserName(attrVal, sessionId);
+            LoginCache.getInstance().setSessionBySessionId(sessionId, session);
+
         }
-        return new int[]{0,0};
+
     }
-}</code></pre><p>此时显示执行用时9ms，内存消耗39Mz，时间上大大减少了。<br>代码算法优化简直太重要啦</p>
+
+    @Override
+    public void attributeRemoved(HttpSessionBindingEvent arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void attributeReplaced(HttpSessionBindingEvent arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+}</code></pre><p>到现在为止我们就完成了目标任务。<br>该程序可以在主页main.jsp和index.jsp中添加css样式进行美化。更好的实现登陆页面功能。</p>
+<p><strong>要点</strong></p>
+<ul>
+<li>过滤器对目标网站进行过滤，保证了用户正确登陆之后才能进入main.jsp页面。</li>
+<li>监听器对对象的添加属性动作进行监听。保证了session中只有一个用户</li>
+</ul>
 
     </div>
 
@@ -374,13 +580,13 @@
           
         
         <div class="post-tags">
-            <a href="/tags/leetcode/" rel="tag"><i class="fa fa-google"></i> -leetcode</a>
+            <a href="/tags/监听器/" rel="tag"><i class="fa fa-google"></i> 监听器</a>
           
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/09/07/正则表达式/" rel="next" title="正则表达式">
-                <i class="fa fa-chevron-left"></i> 正则表达式
+              <a href="/2019/09/10/监听器入门/" rel="next" title="监听器入门">
+                <i class="fa fa-chevron-left"></i> 监听器入门
               </a>
             
           </div>
@@ -388,10 +594,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/09/10/过滤器入门/" rel="prev" title="过滤器入门">
-                过滤器入门 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
@@ -545,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始刷leetcode啦！加油加油！"><span class="nav-number">1.</span> <span class="nav-text">开始刷leetcode啦！加油加油！</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number"></span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思想"><span class="nav-number">1.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码如下"><span class="nav-number">2.</span> <span class="nav-text">代码如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码如下："><span class="nav-number">3.</span> <span class="nav-text">代码如下：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#要求"><span class="nav-number">1.</span> <span class="nav-text">要求:</span></a></li></ol></div>
             
 
           </div>

@@ -60,7 +60,7 @@
 </script>
 
   <meta name="description" content="介绍二级联动的菜单在网页中很常见，通常是通过鼠标点一级菜单的相关内容之后二级菜单做出响应变化显示出一级菜单对应的子菜单。我这次是用AJAX的相关知识进行实现。 我的思路：1.首先我构造了一个类Channel目的就是为了为每个菜单添加名字和内容的两个属性。 2.在网页初初始化时候我们要对一级菜单进行显示，也就是向servlet中传递一个level=1的变量当服务器接收到level=1时 将一级菜单里">
-<meta name="keywords" content="javaweb">
+<meta name="keywords" content="-AJAX">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AJAX项目-二级联动菜单的设置">
 <meta property="og:url" content="http://cangmis.github.io/2019/09/06/AJAX项目--二级联动菜单的设置/index.html">
@@ -68,7 +68,7 @@
 <meta property="og:description" content="介绍二级联动的菜单在网页中很常见，通常是通过鼠标点一级菜单的相关内容之后二级菜单做出响应变化显示出一级菜单对应的子菜单。我这次是用AJAX的相关知识进行实现。 我的思路：1.首先我构造了一个类Channel目的就是为了为每个菜单添加名字和内容的两个属性。 2.在网页初初始化时候我们要对一级菜单进行显示，也就是向servlet中传递一个level=1的变量当服务器接收到level=1时 将一级菜单里">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/cangmis/images/master/13.png?token=AM6S7ARRSH4AZWV2FGBIY7S5OIMKM">
-<meta property="og:updated_time" content="2019-09-06T08:35:01.190Z">
+<meta property="og:updated_time" content="2019-09-16T01:48:08.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX项目-二级联动菜单的设置">
 <meta name="twitter:description" content="介绍二级联动的菜单在网页中很常见，通常是通过鼠标点一级菜单的相关内容之后二级菜单做出响应变化显示出一级菜单对应的子菜单。我这次是用AJAX的相关知识进行实现。 我的思路：1.首先我构造了一个类Channel目的就是为了为每个菜单添加名字和内容的两个属性。 2.在网页初初始化时候我们要对一级菜单进行显示，也就是向servlet中传递一个level=1的变量当服务器接收到level=1时 将一级菜单里">
@@ -281,11 +281,21 @@
                 
               
 
-              <time title="创建时间：2019-09-06 17:50:45 / 修改时间：16:35:01" itemprop="dateCreated datePublished" datetime="2019-09-06T17:50:45+08:00">2019-09-06</time>
+              <time title="创建时间：2019-09-06 17:50:45" itemprop="dateCreated datePublished" datetime="2019-09-06T17:50:45+08:00">2019-09-06</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-16 09:48:08" itemprop="dateModified" datetime="2019-09-16T09:48:08+08:00">2019-09-16</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -296,7 +306,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javaWeb/" itemprop="url" rel="index"><span itemprop="name">javaWeb</span></a></span>
 
                 
                 
@@ -488,7 +498,7 @@ $(function(){//初始化显示一级菜单
           
         
         <div class="post-tags">
-            <a href="/tags/javaweb/" rel="tag"><i class="fa fa-google"></i> javaweb</a>
+            <a href="/tags/AJAX/" rel="tag"><i class="fa fa-google"></i> -AJAX</a>
           
         </div>
         <div class="post-nav">
@@ -560,7 +570,7 @@ $(function(){//初始化显示一级菜单
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -581,9 +591,7 @@ $(function(){//初始化显示一级菜单
         
           
         
-          
-        
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -612,7 +620,11 @@ $(function(){//初始化显示一级菜单
         
           
         
-        <span class="site-state-item-count">7</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
