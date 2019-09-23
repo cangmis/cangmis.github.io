@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="项目需求 主要功能：   1、注册登录功能    注册：信息包括用户名、密码、密码确认、手机号码和邮箱，要使用正则表达式进行校验     登录：注册成功直接跳转到登录页面，登录成功后显示用户名     登录成功后进入管理页面。      使用过滤器限制不登录不能进入管理页面    2、图书分类管理    分类添加：分类id、名字、描述    3、图书管理    图书添加：内容包括图书id、图书名、">
+<meta name="keywords" content="图书馆管理项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图书馆管理项目（Ajax,jQuery，JSON,JSTL,正则表达式，过滤器等的应用）">
+<meta property="og:url" content="http://cangmis.github.io/2019/09/23/图书馆项目/index.html">
+<meta property="og:site_name" content="Cangmi">
+<meta property="og:description" content="项目需求 主要功能：   1、注册登录功能    注册：信息包括用户名、密码、密码确认、手机号码和邮箱，要使用正则表达式进行校验     登录：注册成功直接跳转到登录页面，登录成功后显示用户名     登录成功后进入管理页面。      使用过滤器限制不登录不能进入管理页面    2、图书分类管理    分类添加：分类id、名字、描述    3、图书管理    图书添加：内容包括图书id、图书名、">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-23T14:44:47.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图书馆管理项目（Ajax,jQuery，JSON,JSTL,正则表达式，过滤器等的应用）">
+<meta name="twitter:description" content="项目需求 主要功能：   1、注册登录功能    注册：信息包括用户名、密码、密码确认、手机号码和邮箱，要使用正则表达式进行校验     登录：注册成功直接跳转到登录页面，登录成功后显示用户名     登录成功后进入管理页面。      使用过滤器限制不登录不能进入管理页面    2、图书分类管理    分类添加：分类id、名字、描述    3、图书管理    图书添加：内容包括图书id、图书名、">
+  <link rel="canonical" href="http://cangmis.github.io/2019/09/23/图书馆项目/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>图书馆管理项目（Ajax,jQuery，JSON,JSTL,正则表达式，过滤器等的应用） | Cangmi</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/cangmis" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cangmi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cangmis.github.io/2019/09/23/图书馆项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="苍糜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cangmi">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">图书馆管理项目（Ajax,jQuery，JSON,JSTL,正则表达式，过滤器等的应用）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-23 09:03:53 / 修改时间：22:44:47" itemprop="dateCreated datePublished" datetime="2019-09-23T09:03:53+08:00">2019-09-23</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javaweb/" itemprop="url" rel="index"><span itemprop="name">javaweb</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><blockquote>
+<p>主要功能：</p>
+</blockquote>
+<blockquote>
+<p>1、注册登录功能</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>注册：信息包括用户名、密码、密码确认、手机号码和邮箱，要使用正则表达式进行校验</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>登录：注册成功直接跳转到登录页面，登录成功后显示用户名</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>登录成功后进入管理页面。 </li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>使用过滤器限制不登录不能进入管理页面</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>2、图书分类管理</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>分类添加：分类id、名字、描述</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>3、图书管理</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>图书添加：内容包括图书id、图书名、图书分类、价格、描述</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>图书查询：列出所有图书完整信息，可以按id、图书名、分类进行查询，使用Ajax局部刷新，显示所有图书时要使用jstl</li>
+</ul>
+</blockquote>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程:"></a>实现过程:</h2><h3 id="注册功能的实现："><a href="#注册功能的实现：" class="headerlink" title="注册功能的实现："></a>注册功能的实现：</h3><p>注册包括用户名，密码，密码确认，手机号码和邮箱并且都要进行正则表达式进行校验</p>
+<p>所以我们要用js写一个事件。比如说用户名，当失去鼠标焦点的时候就触发一个事件。该事件要做的就是要判断该用户名是否满足需求</p>
+<p>定义一个正则表达式。用正则表达式的text方法来检验name的值是否正确。不正确的话就清除该文本框的内容并让用户重新输入。</p>
+<p>密码确认的时时候要比较两次密码输入是否一致，不一致也要清除文本框，让用户重新输入。</p>
+<p>我们在点击提交的时候，要将页面跳转到一个RegistServlet里面，目的是进行用户信息的保存。以便于用户登陆时信息的比对。</p>
+<p>因为有多个用户。所以我们在进行信息保存的时候通常保存在一个列表里面，列表的中保存的类型是用户类。</p>
+<p>那么我们要先创建一个用户类：属性是用户的名字，密码，手机，和邮箱号。还有getter，setter方法。构造函数方法。</p>
+<p>接着我们在一个操作类中保存这个用户。定义一个操作类为LibDaoImpl，在这里定义一个    <strong>private static final List<user>userlist=new ArrayList();</user></strong>用来保存用户列表。还有一个方法是addUserList(User user)//用来添加用户。</p>
+<p>我们在servlet中用request.getParameter(“”)方法提取出用户的属性值。利用用户类的构造函数方法对User类进行初始化。调用LibDaoImpl中的addUserList（User user）方法将该注册用户添加到列表里。</p>
+<h3 id="登陆功能的实现"><a href="#登陆功能的实现" class="headerlink" title="登陆功能的实现"></a>登陆功能的实现</h3><p>登陆的时候，我们有两点需要注意：第一点，我们先判断该用户是否注册过，第二点，我们判断该用户的用户名和用户密码是否输入正确</p>
+<p>我们判断的唯一依据就是根据注册时，我们保存的用户列表。因为用户列表是private  我们要通过公有的方法去访问到该列表。</p>
+<p>我们首先看该列表有没有登陆时候输入的用户名。那么我们在LibDaoImpl中创建的方法就应该是public boolean isexits(String username）</p>
+<p>我们在LoginServlet页面利用request.getParemeter(“”)方法获取用户的用户名。</p>
+<p>然后调用isexits方法如果返回值为false。让它跳转到注册页面。如果是ture就要进行下一步的用户名和密码是否正确的验证环节。</p>
+<p>同样在LoginServlet中创建一个方法islogin(Stringusername,String password)。</p>
+<p>如果返回值为true 就跳转到图书管理页面，如果为false就重新登陆。</p>
+<p>我们为了防止用户跳过登陆和注册就直接进入图书管理页面。我们要弄一个过滤器。过滤掉没有登陆的页面。</p>
+<h3 id="图书分类添加的实现"><a href="#图书分类添加的实现" class="headerlink" title="图书分类添加的实现"></a>图书分类添加的实现</h3><p>分类时  有分类id，分类名，分类表述。因为有多个分类，所以我们也利用一个保存分类的列表来存储。存储的数据类型时一个Map用来保存属性和值的信息。<br>在操作类中定义：private static final List&lt;Map&lt;String, Object&gt;&gt; categorys=new ArrayList&lt;Map&lt;String,Object&gt;&gt;();<br>对应的方法是public void addBookCatgory(String id, String catgoryName, String description)<br>与上述过程一样，创建一个servlet  CatgoryServlet。获取图书的分类id，分类名，和分类描述，利用方法addBookCatgory()方法来保存图书分类信息。<br>外界过去图书分类用到的方法是public List&lt;Map&lt;String, Object&gt;&gt; getAllBookCatgory()；</p>
+<p>如果在图书添加页面分类下拉框中显示分类信息。这时要用到JSTL<br>在addBook.jsp中利用获取图书分类的方法 获取categoryList列表，利用JSTL中的迭代功能进行遍历显示</p>
+<h3 id="图书添加的实现"><a href="#图书添加的实现" class="headerlink" title="图书添加的实现"></a>图书添加的实现</h3><p> 图书添加时候，我们要保存图书信息，建立一个图书类。属性值为bookId，bookName，catgoryName，count，description;</p>
+<p> 添加getter和setter方法和构造函数的方法。好多图书，用列表来保存。在操作类中定义一个</p>
+<p>private static final List <book>addBooklist =new ArrayList&lt;&gt;();对应方法是 addBook(Book book)；</book></p>
+<p> 获取图书信息对应的方法是public List<book> getBook();</book></p>
+<p> 在AddBookServlet中利用getparameter方法获取图书信息。利用操作类中添加图书的方法将图书信息存储到图书列表中。</p>
+<p> 在显示图书页面中利用getBook()方法获取图书信息。</p>
+<h3 id="图书查询的实现。"><a href="#图书查询的实现。" class="headerlink" title="图书查询的实现。"></a>图书查询的实现。</h3><p>我们可以根据图书的id  图书的分类  和图书的名称任意几个属性来获取我们所需要的图书。</p>
+<p>那么我们就要在操作类中定义一个方法：该方法就是根据条件来找到对应的图书信息，返回是一个列表。</p>
+<p>public List<book> getBookByCondition(String bookId,String bookName,String catoryName)</book></p>
+<p>这个操作的利用了Ajax 的动态刷新。</p>
+<p>创建一个Servlet。   SelectBookServlet中我们获取索要查询的图书的分类，id和图书的名称利用</p>
+<p>getBookByCondition的方法来获取图书列表，再用JSSON.toJSONString()方法将列表序列化返回到</p>
+<p>查询的界面。完成查询，利用ajax 完成动态刷新。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><strong>静态网页代码</strong></p>
+<p>1.初始界面index.jsp</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=utf-8&quot;
+    pageEncoding=&quot;utf-8&quot;%&gt;
+ &lt;%String flag=request.getParameter(&quot;flag&quot;); %&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type=text/javascript&gt;
+var flag=&lt;%=flag%&gt;
+if(flag==1)
+alert(&quot;该用户用户名或者密码错误&quot;);
+else if(flag==2)
+    alert(&quot;请先登陆&quot;);
+else if(flag==3)
+    alert(&quot;已经注册过可直接登陆&quot;);
+&lt;/script&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;图书后台管理登录界面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;center&gt;
+        &lt;h1&gt;登录 | &lt;a href=&quot;./regist.jsp&quot;&gt;注册&lt;/a&gt;&lt;/h1&gt;
+        &lt;form action=&quot;./LoginServlet&quot; method=&quot;post&quot;&gt;
+            &lt;table width=&quot;350px&quot; cellspacing=&quot;0px&quot; cellpadding=&quot;0px&quot; border=&quot;1px&quot;&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;用户名&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;用户名为3-12位字母数字或下划线组合&quot; &gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;密&amp;nbsp;码&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;长度为6-12位的纯数字&quot; &gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; style=&quot;text-align:center&quot;&gt;
+                        &lt;input type=&quot;submit&quot; value=&quot;登录&quot;&gt;
+                        &lt;input type=&quot;reset&quot; value=&quot;取消&quot;&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>2.注册页面regix</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;%@page import=&quot;bookclass.LibDaoImpl&quot;%&gt;
+&lt;%String flag=request.getParameter(&quot;flag&quot;); %&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script type=text/javascript&gt;
+var flag=&lt;%=flag%&gt;
+if(flag==1)
+
+alert(&quot;该用户没注册，请注册&quot;);
+if(flag==2)
+alert(&quot;该用户已经注册过&quot;);
+
+&lt;/script&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;注册界面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;center&gt;
+        &lt;h1&gt;用户注册&lt;/h1&gt;
+        &lt;form action=&quot;./RegistServlet&quot; method=&quot;post&quot;&gt;
+            &lt;table width=&quot;400px&quot; cellspacing=&quot;0px&quot; cellpadding=&quot;0px&quot; border=&quot;1px&quot;&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;用户名&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot;placeholder=&quot;用户名为3-12位字母数字或下划线组合&quot; &gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;密&amp;nbsp;码&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; placeholder=&quot;密码长度为6-12位的纯数字&quot;  id=&quot;password&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;确认密码&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;checkPWD&quot; id=&quot;checkPWD&quot;  placeholder=&quot;密码长度为6-12位的纯数字&quot; &quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;手机号码&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;phone&quot; id=&quot;phone&quot; placeholder=&quot;请输入正确的手机号码格式&quot; &gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;邮箱&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot;  placeholder=&quot;请输入正确邮箱格式&quot; required=&quot;required&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; style=&quot;text-align:center&quot;&gt;
+                        &lt;input type=&quot;submit&quot; value=&quot;注册&quot;&gt;
+                        &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+    &lt;/center&gt;
+
+&lt;script type=&quot;text/javascript&quot; &gt;
+
+document.getElementById(&quot;password&quot;).onchange=function()
+{
+
+    var regex=/^\d{6,12}$/;
+    var password=document.getElementById(&quot;password&quot;).value;
+    if(!(regex.test(password)))
+        {
+        document.getElementById(&quot;password&quot;).value=&quot;&quot;;
+        alert(&quot;密码输入不符合规范，请重新输入&quot;);
+
+        }
+
+
+}
+document.getElementById(&quot;username&quot;).onchange=function()
+{
+
+    var regex=/^[a-zA-Z0-9_]{3,12}$/;
+    var username=document.getElementById(&quot;username&quot;).value;
+
+    if(!(regex.test(username)))
+        {
+
+
+        document.getElementById(&quot;username&quot;).value=&quot;&quot;;
+        alert(&quot;用户名输入不符合规范，请重新输入&quot;);
+
+        }
+
+
+}
+
+document.getElementById(&quot;checkPWD&quot;).onchange=function()
+{
+
+    var  password1=document.getElementById(&quot;password&quot;).value;
+    var password2=document.getElementById(&quot;checkPWD&quot;).value;
+
+    if(!(password1==password2))
+        {
+
+        document.getElementById(&quot;password&quot;).value=&quot;&quot;;
+        document.getElementById(&quot;checkPWD&quot;).value=&quot;&quot;;
+        alert(&quot;两次输入密码不一致请重新输入&quot;);
+
+        }
+
+
+}
+document.getElementById(&quot;phone&quot;).onchange=function()
+{
+
+    var  phone=document.getElementById(&quot;phone&quot;).value;
+var regex=/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+    if(!(regex.test(phone)))
+        {
+
+
+        document.getElementById(&quot;phone&quot;).value=&quot;&quot;;
+        alert(&quot;手机号输入格式错误&quot;);
+
+        }
+
+
+}
+
+document.getElementById(&quot;email&quot;).onchange=function()
+{
+
+    var  email=document.getElementById(&quot;email&quot;).value;
+var regex=/^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/
+    if(!(regex.test(email)))
+        {
+
+
+        document.getElementById(&quot;email&quot;).value=&quot;&quot;;
+        alert(&quot;邮箱格式错误&quot;);
+
+        }
+
+
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>3.图书管理页面</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;图书后台管理系统&lt;/title&gt;
+&lt;/head&gt;
+&lt;frameset rows=&quot;20%,*&quot;&gt;
+    &lt;frame src=&quot;./top.jsp&quot;&gt;&lt;/frame&gt;
+    &lt;frameset cols=&quot;10%,*&quot;&gt;
+        &lt;frame src=&quot;./left.html&quot;&gt;&lt;/frame&gt;
+        &lt;frame name=&quot;main&quot;&gt;&lt;/frame&gt;
+    &lt;/frameset&gt;
+&lt;/frameset&gt;
+&lt;/html&gt;</code></pre><p>4.左边的功能框界面left.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;图书后台管理&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;&lt;a href=&quot;./catgory.jsp&quot; target=&quot;main&quot;&gt;分类添加&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;./addBook.jsp&quot; target=&quot;main&quot;&gt;图书添加&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;./showBooks.jsp&quot; target=&quot;main&quot;&gt;图书查询&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>5.上边展示页面</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+
+  &lt;% String name=(String)session.getAttribute(&quot;username&quot;);%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;center&gt;
+        &lt;h1&gt;
+            图书后台管理系统&lt;span style=&quot;font-size:12px&quot;&gt;您好，&lt;%=name %&gt;&lt;/span&gt;
+        &lt;/h1&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>6.添加图书类界面</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;图书分类添加&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;center&gt;
+        &lt;h1&gt;图书分类添加&lt;/h1&gt;
+        &lt;form action=&quot;./CatgoryServlet&quot; method=&quot;post&quot;&gt;
+            &lt;table width=&quot;400px&quot; cellspacing=&quot;0px&quot; cellpadding=&quot;0px&quot; border=&quot;1px&quot;&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;分类ID&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;id&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;名&amp;nbsp;字&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;catgoryName&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;描&amp;nbsp;述&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;description&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; style=&quot;text-align:center&quot;&gt;
+                        &lt;input type=&quot;submit&quot; value=&quot;添加&quot;&gt;
+                        &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>7.添加图书界面</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=utf-8&quot;
+    pageEncoding=&quot;utf-8&quot;%&gt;
+&lt;%@ page import=&quot;bookclass.LibDaoImpl&quot; %&gt;
+&lt;%@ page import=&quot;java.util.*&quot; %&gt;
+&lt;%@page import=&quot;java.util.Map&quot;%&gt;
+&lt;%@taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt;
+&lt;%LibDaoImpl dao=new LibDaoImpl();
+List&lt;Map&lt;String,Object&gt;&gt; list=new ArrayList();
+list=dao.getcatgorylist();
+request.setAttribute(&quot;list&quot;,list);
+
+%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;图书添加&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;center&gt;
+        &lt;h1&gt;图书添加&lt;/h1&gt;
+        &lt;form action=&quot;./AddBookServlet&quot; method=&quot;post&quot;&gt;
+            &lt;table width=&quot;400px&quot; cellspacing=&quot;0px&quot; cellpadding=&quot;0px&quot; border=&quot;1px&quot;&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;图书ID&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;id&quot; placeholder=&quot;请输入数字&quot; pattern=&quot;\d+&quot; required=&quot;required&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;图书名&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;bookName&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;图书分类&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;select name=&quot;catgoryName&quot;&gt;
+
+                        &lt;c:forEach items=&quot;${list}&quot; var=&quot;c&quot;&gt;
+
+                        &lt;option value=&quot;${c.catgoryName}&quot;&gt;&amp;nbsp;&amp;nbsp;${c.catgoryName}&lt;/option&gt;
+                        &lt;/c:forEach&gt;
+                        &lt;/select&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;价格&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;price&quot; placeholder=&quot;请输入价格&quot; &gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;描述&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;description&quot; placeholder=&quot;请输入描述信息&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; style=&quot;text-align:center&quot;&gt;
+                        &lt;input type=&quot;submit&quot; value=&quot;添加&quot;&gt;
+                        &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+    &lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>8.书籍展示页面</p>
+<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;%@page import=&quot;bookclass.LibDaoImpl&quot;%&gt;
+&lt;%@page import=&quot;bookclass.Book&quot;%&gt;
+&lt;%@page import=&quot; java.util.List&quot;%&gt;
+&lt;%@page import=&quot; java.util.ArrayList&quot;%&gt;
+&lt;%@page import=&quot;java.util.Map&quot;%&gt;
+&lt;%@taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;% 
+LibDaoImpl dao=new LibDaoImpl();
+List&lt;Book&gt;list =dao.getBook();
+
+request.setAttribute(&quot;booklist&quot;,list);
+%&gt;
+&lt;/script&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;图书查询&lt;/title&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;center&gt;
+        &lt;h1&gt;图书查询&lt;/h1&gt;
+        &lt;p&gt;
+            图书ID：&lt;input type=&quot;text&quot; name=&quot;bookID&quot; id=&quot;bookId&quot;&gt;
+            图书名：&lt;input type=&quot;text&quot; name=&quot;bookName&quot; id=&quot;bookName&quot;&gt;
+            分类：&lt;input type=&quot;text&quot; name=&quot;catgoryName&quot; id=&quot;catoryName&quot;&gt;
+            &lt;input type=&quot;button&quot; value=&quot;查询&quot; id=&quot;search&quot;&gt;
+        &lt;/p&gt;
+        &lt;hr&gt;
+        &lt;table width=&quot;800px&quot; cellspacing=&quot;0px&quot; cellpadding=&quot;0px&quot; border=&quot;1px&quot;&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;图书ID&lt;/th&gt;
+                    &lt;th&gt;书名&lt;/th&gt;
+                    &lt;th&gt;分类&lt;/th&gt;
+                    &lt;th&gt;价格&lt;/th&gt;
+                    &lt;th&gt;描述&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody id=&quot;cont&quot;&gt;
+            &lt;c:forEach items=&quot;${booklist}&quot; var=&quot;b&quot;&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;${b.getBookId()}&lt;/td&gt;
+                        &lt;td&gt;${b.getBookName()}&lt;/td&gt;
+                        &lt;td&gt;${b.getBookCatogry()}&lt;/td&gt;
+                        &lt;td&gt;${b.getBookPrice() }&lt;/td&gt;
+                        &lt;td&gt;${b.getBookDescription() }&lt;/td&gt;
+                    &lt;/tr&gt;
+            &lt;/c:forEach&gt;
+
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/center&gt;
+
+        &lt;script type=&quot;text/javascript&quot; src=&quot;JS/jquery-3.4.1.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    $(&quot;#search&quot;).click(function(){
+         $.ajax({
+
+             &quot;url&quot;:&quot;/book/SelectBookServlet&quot;,
+             &quot;data&quot;:{bookID:$(&quot;#bookId&quot;).val(), 
+                bookName:$(&quot;#bookName&quot;).val(), 
+                catgoryName:$(&quot;#catoryName&quot;).val()
+             },
+             &quot;type&quot;:&quot;post&quot;,
+             &quot;dataType&quot;:&quot;json&quot;,
+             &quot;success&quot;:function(json){
+
+                 var content=&quot;&quot;;
+                 for(var i=0;i&lt;json.length;i++){
+
+                     content=content+&quot;&lt;tr&gt;&lt;td&gt;&quot;+json[i].bookId +
+                                     &quot;&lt;/td&gt;&lt;td&gt;&quot;+json[i].bookName+
+                                     &quot;&lt;/td&gt;&lt;td&gt;&quot;+json[i].bookCatogry+
+                                     &quot;&lt;/td&gt;&lt;td&gt;&quot;+json[i].bookPrice+
+                                     &quot;&lt;/td&gt;&lt;td&gt;&quot;+json[i].bookDescription+
+                                     &quot;&lt;/td&gt;&lt;/tr&gt;&quot;;
+
+                     $(&quot;#cont&gt;tr&quot;).remove();
+                 }
+
+                 $(&quot;#cont&quot;).html(content);
+             }
+         })
+     })
+
+
+    &lt;/script&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p><strong>Book类</strong></p>
+<pre><code>package bookclass;
+
+public class Book {
+private String bookId;
+private String bookName;
+private String bookCatogry;
+private String bookPrice;
+private String bookDescription;
+
+@Override
+public String toString() {
+    return &quot;Book [bookId=&quot; + bookId + &quot;, bookName=&quot; + bookName + &quot;, bookCatogry=&quot; + bookCatogry + &quot;, bookPrice=&quot;
+            + bookPrice + &quot;, bookDescription=&quot; + bookDescription + &quot;]&quot;;
+}
+public Book() {
+    // TODO Auto-generated constructor stub
+}
+public String getBookId() {
+    return bookId;
+}
+public void setBookId(String bookId) {
+    this.bookId = bookId;
+}
+public String getBookName() {
+    return bookName;
+}
+public void setBookName(String bookName) {
+    this.bookName = bookName;
+}
+public String getBookCatogry() {
+    return bookCatogry;
+}
+public void setBookCatogry(String bookCatogry) {
+    this.bookCatogry = bookCatogry;
+}
+public String getBookPrice() {
+    return bookPrice;
+}
+public void setBookPrice(String bookPrice) {
+    this.bookPrice = bookPrice;
+}
+public String getBookDescription() {
+    return bookDescription;
+}
+public void setBookDescription(String bookDescription) {
+    this.bookDescription = bookDescription;
+}
+
+}</code></pre><p><strong>User类</strong></p>
+<pre><code>     package bookclass;
+    public class User {
+    public User(String username, String password, String phone, String email) {
+        super();
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    private String username;
+    private  String password;
+    private  String phone;
+    private String email;
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+}</code></pre><p><strong>操作类</strong></p>
+<pre><code>package bookclass;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class LibDaoImpl {
+
+    private static final List&lt;User&gt; userlist=new ArrayList&lt;&gt;();
+    private static final List&lt;Map &lt;String,Object&gt; &gt; catgorylist =new ArrayList&lt;&gt;();
+    private static final List&lt;Book&gt; booklist=new ArrayList&lt;&gt;();
+
+
+    public void addUser(User user)//添加用户
+    {
+        userlist.add(user);
+
+
+    }
+    public boolean isExitsUsername(String username)//判断该用户是否注册过
+    {
+        for(User user:userlist)
+        {
+            if(user.getUsername().equals(username))
+                    {
+
+                return true;
+
+                    }
+
+        }
+
+        return false;
+
+
+    }
+    public  boolean successLogin(String username,String password) {
+
+        for(User user:userlist)
+        {
+
+            if(user.getUsername().equals(username)&amp;&amp;user.getPassword().equals(password))
+            {
+
+                return true;
+
+            }
+        }
+        return false;
+
+    }
+
+    public void addcatgorylist(Map &lt;String,Object&gt; map)//添加图书分类
+    {
+        catgorylist.add(map);
+
+
+
+    }
+
+
+    public List&lt;Map &lt;String,Object&gt; &gt; getcatgorylist()//获取图书分类
+    {
+        return catgorylist;
+
+    }
+    public void addBook(Book book)
+    {    
+
+
+        booklist.add(book);
+
+
+    }
+    public  List&lt;Book&gt; getBook()
+    {
+        return  booklist;
+
+    }
+    public List&lt;Book&gt; findBookByCondition(String bookID,String bookCatgory,String bookName)
+    {
+        List&lt;Book&gt; rightbook=new ArrayList&lt;&gt;();
+        for(Book book:booklist)
+        {
+            if(book.getBookCatogry().equals(bookCatgory)||book.getBookName().equals(bookName)||book.getBookId().equals(bookID))
+            {
+                rightbook.add(book);
+
+
+            }
+
+        }
+
+        return rightbook;
+
+    }
+
+
+
+}</code></pre><p><strong>添加书的servlet</strong></p>
+<pre><code>package servlet;
+import bookclass.Book;
+import bookclass.LibDaoImpl;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class AddBookServlet
+ */
+@WebServlet(&quot;/AddBookServlet&quot;)
+public class AddBookServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AddBookServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+        String id=request.getParameter(&quot;id&quot;);
+        String bookName=request.getParameter(&quot;bookName&quot;);
+        String catgoryName=request.getParameter(&quot;catgoryName&quot;);
+        String price=request.getParameter(&quot;price&quot;);
+        String description=request.getParameter(&quot;description&quot;);
+        Book book=new Book();
+        book.setBookCatogry( catgoryName);
+        book.setBookDescription(description);
+        book.setBookId(id);
+        book.setBookName(bookName);
+        book.setBookPrice(price);
+        LibDaoImpl dao=new LibDaoImpl();
+        dao.addBook(book);
+
+
+
+        response.sendRedirect(&quot;./showBooks.jsp&quot;);
+
+    }
+
+}</code></pre><p><strong>添加书类的servlet</strong></p>
+<pre><code>package servlet;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import bookclass.LibDaoImpl;
+
+/**
+ * Servlet implementation class CatgoryServlet
+ */
+@WebServlet(&quot;/CatgoryServlet&quot;)
+public class CatgoryServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CatgoryServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+                  String id=request.getParameter(&quot;id&quot;);
+                String catgoryName =request.getParameter(&quot;catgoryName&quot;);
+                String description =request.getParameter(&quot;description&quot;);
+                LibDaoImpl dao=new LibDaoImpl();
+                Map&lt;String,Object&gt;map=new HashMap&lt;&gt;();
+                map.put(&quot;id&quot;, id);
+                map.put(&quot;catgoryName&quot;,catgoryName);
+                map.put(&quot;description&quot;,description);
+                dao.addcatgorylist(map);
+
+        response.sendRedirect(&quot;./catgory.jsp&quot;);
+
+
+    }
+
+}</code></pre><p><strong>用户登陆servlet</strong></p>
+<pre><code>package servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import bookclass.LibDaoImpl;
+
+/**
+ * Servlet implementation class LoginServlet
+ */
+@WebServlet(&quot;/LoginServlet&quot;)
+public class LoginServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+       String username=request.getParameter(&quot;username&quot;);
+
+       String password=request.getParameter(&quot;password&quot;);
+       LibDaoImpl dao=new LibDaoImpl();
+       if(dao.isExitsUsername(username))
+       {
+       if(dao.successLogin(username, password))
+       {
+           request.getSession().setAttribute(&quot;username&quot;,username);
+           response.sendRedirect(&quot;./server.html&quot;);
+
+       }
+       else
+       {
+
+            response.sendRedirect(&quot;./index.jsp?flag=1&quot;);
+       }
+
+
+    }
+       else 
+           response.sendRedirect(&quot;./regist.jsp?flag=2&quot;);
+    }
+
+}</code></pre><p><strong>用户注册servlet</strong></p>
+<pre><code>package servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import bookclass.LibDaoImpl;
+import bookclass.User;
+
+/**
+ * Servlet implementation class RegistServlet
+ */
+@WebServlet(&quot;/RegistServlet&quot;)
+public class RegistServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RegistServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        request.setCharacterEncoding(&quot;UTF-8&quot;);
+
+    String username=request.getParameter(&quot;username&quot;);
+    String password=request.getParameter(&quot;password&quot;);
+    String phone=request.getParameter(&quot;phone&quot;);
+    String email=request.getParameter(&quot;email&quot;);
+    LibDaoImpl dao =new LibDaoImpl();
+    if(dao.isExitsUsername(username))//为真表明已经注册过
+    {
+         response.sendRedirect(&quot;./index.jsp?flag=3&quot;);
+
+    }
+    else 
+    {
+    User user=new User(username,password,phone,email);
+    dao.addUser(user);
+    response.sendRedirect(&quot;./index.jsp&quot;);
+    }
+
+    }
+
+}</code></pre><p><strong>查询书籍servlet</strong></p>
+<pre><code>package servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSON;
+
+import bookclass.Book;
+import bookclass.LibDaoImpl;
+
+/**
+ * Servlet implementation class SelectBookServlet
+ */
+@WebServlet(&quot;/SelectBookServlet&quot;)
+public class SelectBookServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SelectBookServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+        String bookID=request.getParameter(&quot;bookID&quot;);
+
+        String bookName=request.getParameter(&quot;bookName&quot;);
+        String catgoryName=request.getParameter(&quot;catgoryName&quot;);
+        LibDaoImpl dao=new LibDaoImpl();
+        List&lt;Book&gt; abook=dao.findBookByCondition(bookID, catgoryName, bookName);
+        String json=JSON.toJSONString(abook);
+
+
+          response.getWriter().println(json);
+    }
+
+}</code></pre><h3 id="两个过滤类"><a href="#两个过滤类" class="headerlink" title="两个过滤类"></a>两个过滤类</h3><p>1.解决中文乱码的过滤类<br>    package filter;</p>
+<pre><code>import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+
+/**
+ * Servlet Filter implementation class CharacterEncodingFilter
+ */
+@WebFilter(&quot;/CharacterEncodingFilter&quot;)
+public class CharacterEncodingFilter implements Filter {
+    private FilterConfig config;
+
+    /**
+     * Default constructor. 
+     */
+    public CharacterEncodingFilter() {
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @see Filter#destroy()
+     */
+    public void destroy() {
+        // TODO Auto-generated method stub
+    }
+
+    /**
+     * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+     */
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+        request.setCharacterEncoding(config.getInitParameter(&quot;charset&quot;));
+
+
+        chain.doFilter(request, response);
+
+    }
+    public void init(FilterConfig config) throws ServletException {
+        this.config = config;
+
+    }
+
+    public FilterConfig getConfig() {
+        return config;
+    }
+
+    public void setConfig(FilterConfig config) {
+        this.config = config;
+    }
+
+
+
+
+}</code></pre><p>2.解决用户没登陆就进入界面的过滤类</p>
+<pre><code>package filter;
+
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet Filter implementation class LoginFilter
+ */
+@WebFilter(&quot;/LoginFilter&quot;)
+public class LoginFilter implements Filter {
+
+    /**
+     * Default constructor. 
+     */
+    public LoginFilter() {
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @see Filter#destroy()
+     */
+    public void destroy() {
+        // TODO Auto-generated method stub
+    }
+
+    /**
+     * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+     */
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest hrequest=(HttpServletRequest)request;
+        HttpServletResponse hresponse=(HttpServletResponse)response;
+        String name=(String)hrequest.getSession().getAttribute(&quot;username&quot;);
+        System.out.println(name);
+        if(name==null||name.length()==0)
+        {
+              hresponse.sendRedirect(hrequest.getContextPath()+&quot;/index.jsp?flag=2&quot;);
+            return ;
+        }
+        else
+        {
+            chain.doFilter(request, response);
+            return;
+
+    }
+    }
+    /**
+     * @see Filter#init(FilterConfig)
+     */
+    public void init(FilterConfig fConfig) throws ServletException {
+        // TODO Auto-generated method stub
+    }
+
+}</code></pre><p>3.xml配置</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;3.1&quot;&gt;
+  &lt;display-name&gt;book&lt;/display-name&gt;
+  &lt;welcome-file-list&gt;
+
+    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+
+  &lt;/welcome-file-list&gt;
+   &lt;filter&gt;
+  &lt;filter-name&gt;loginFilter&lt;/filter-name&gt;
+  &lt;filter-class&gt;filter.LoginFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+&lt;filter-name&gt;loginFilter&lt;/filter-name&gt;
+&lt;url-pattern&gt;/server.html&lt;/url-pattern&gt;
+
+&lt;/filter-mapping&gt;
+
+
+&lt;filter&gt;
+        &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;filter.CharacterEncodingFilter&lt;/filter-class&gt;
+
+        &lt;init-param&gt;
+            &lt;param-name&gt;charset&lt;/param-name&gt;
+            &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+    &lt;/filter&gt;
+
+
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+
+    &lt;/filter-mapping&gt;
+
+&lt;/web-app&gt;</code></pre>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/图书馆管理项目/" rel="tag"><i class="fa fa-google"></i> 图书馆管理项目</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/09/19/整数反转/" rel="next" title="小张今天leetcode了吗">
+                <i class="fa fa-chevron-left"></i> 小张今天leetcode了吗
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="苍糜">
+  <p class="site-author-name" itemprop="name">苍糜</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/cangmis" title="GitHub &rarr; https://github.com/cangmis" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/1976045181" title="Weibo &rarr; https://weibo.com/u/1976045181" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目需求"><span class="nav-number">1.</span> <span class="nav-text">项目需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现过程"><span class="nav-number">2.</span> <span class="nav-text">实现过程:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册功能的实现："><span class="nav-number">2.1.</span> <span class="nav-text">注册功能的实现：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登陆功能的实现"><span class="nav-number">2.2.</span> <span class="nav-text">登陆功能的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图书分类添加的实现"><span class="nav-number">2.3.</span> <span class="nav-text">图书分类添加的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图书添加的实现"><span class="nav-number">2.4.</span> <span class="nav-text">图书添加的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图书查询的实现。"><span class="nav-number">2.5.</span> <span class="nav-text">图书查询的实现。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.6.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个过滤类"><span class="nav-number">2.7.</span> <span class="nav-text">两个过滤类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">苍糜</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+      
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
