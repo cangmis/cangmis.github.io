@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Cangmi">
 <meta property="og:description" content="题目 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。   不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。   示例 1:   给定数组 nums = [1,1,2],    函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。    你不需要考虑数组中超出新长度后面的元素。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-24T12:41:25.271Z">
+<meta property="og:updated_time" content="2019-09-24T12:44:45.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小张今天leetcode了吗">
 <meta name="twitter:description" content="题目 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。   不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。   示例 1:   给定数组 nums = [1,1,2],    函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。    你不需要考虑数组中超出新长度后面的元素。">
@@ -279,7 +279,7 @@
                 
               
 
-              <time title="创建时间：2019-09-24 22:30:28 / 修改时间：20:41:25" itemprop="dateCreated datePublished" datetime="2019-09-24T22:30:28+08:00">2019-09-24</time>
+              <time title="创建时间：2019-09-24 22:30:28 / 修改时间：20:44:45" itemprop="dateCreated datePublished" datetime="2019-09-24T22:30:28+08:00">2019-09-24</time>
             </span>
           
             
@@ -355,9 +355,10 @@
 <li><p>不要使用额外的数组空间</p>
 </li>
 <li><p>只能使用 O(1) 额外空间</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>不能开辟数组，只能在该数组操作，就想到了双指针的方法。i指针和j指针。j在前面，也就是慢指针，i在j的后面是快指针。<br>快指针初始化时候指向数组的第二项。</p>
-</li>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3></li>
 </ul>
+<p>不能开辟数组，只能在该数组操作，就想到了双指针的方法。i指针和j指针。j在前面，也就是慢指针，i在j的后面是快指针。</p>
+<p>快指针初始化时候指向数组的第二项。</p>
 <p>如果nums[i]!=nums[i-1]，就要跳过重复项，i和j同时加一。</p>
 <p> 如果nums[i]=nums[i-1]的话就移动i，令i+1， 找到nums[i]!=nums[i-1]的i下标对应的数组值。将该值赋值到j下标的数组元素身上<br>依次覆盖。最后数组的前几位一定是有序的无重复数。</p>
 <p>记得判断数组是否为空。</p>
