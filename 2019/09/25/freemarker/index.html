@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="模板引擎什么是模板引擎 模板引擎的目标是”数据+模板=结果”  模板引擎将数据与展现有效”解耦” 主流模板引擎 java Server Page  Freemarker  Beetl Freemarker FreeMarker是免费开通的模板引擎技术  FreeMarker脚本为FreeMarker Template Language  FreeMarker提供了大量的内建函数来简化开发   如何">
+<meta name="keywords" content="Freemarker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Freemarker">
+<meta property="og:url" content="http://cangmis.github.io/2019/09/25/freemarker/index.html">
+<meta property="og:site_name" content="Cangmi">
+<meta property="og:description" content="模板引擎什么是模板引擎 模板引擎的目标是”数据+模板=结果”  模板引擎将数据与展现有效”解耦” 主流模板引擎 java Server Page  Freemarker  Beetl Freemarker FreeMarker是免费开通的模板引擎技术  FreeMarker脚本为FreeMarker Template Language  FreeMarker提供了大量的内建函数来简化开发   如何">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-26T11:05:06.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Freemarker">
+<meta name="twitter:description" content="模板引擎什么是模板引擎 模板引擎的目标是”数据+模板=结果”  模板引擎将数据与展现有效”解耦” 主流模板引擎 java Server Page  Freemarker  Beetl Freemarker FreeMarker是免费开通的模板引擎技术  FreeMarker脚本为FreeMarker Template Language  FreeMarker提供了大量的内建函数来简化开发   如何">
+  <link rel="canonical" href="http://cangmis.github.io/2019/09/25/freemarker/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Freemarker | Cangmi</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/cangmis" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cangmi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cangmis.github.io/2019/09/25/freemarker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="苍糜">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cangmi">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">Freemarker
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-25 22:31:10" itemprop="dateCreated datePublished" datetime="2019-09-25T22:31:10+08:00">2019-09-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-26 19:05:06" itemprop="dateModified" datetime="2019-09-26T19:05:06+08:00">2019-09-26</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javaweb/" itemprop="url" rel="index"><span itemprop="name">javaweb</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><h3 id="什么是模板引擎"><a href="#什么是模板引擎" class="headerlink" title="什么是模板引擎"></a>什么是模板引擎</h3><ul>
+<li><p>模板引擎的目标是”数据+模板=结果”</p>
+</li>
+<li><p>模板引擎将数据与展现有效”解耦”</p>
+<h3 id="主流模板引擎"><a href="#主流模板引擎" class="headerlink" title="主流模板引擎"></a>主流模板引擎</h3></li>
+<li><p>java Server Page</p>
+</li>
+<li><p>Freemarker</p>
+</li>
+<li><p>Beetl</p>
+<h3 id="Freemarker"><a href="#Freemarker" class="headerlink" title="Freemarker"></a>Freemarker</h3></li>
+<li><p>FreeMarker是免费开通的模板引擎技术</p>
+</li>
+<li><p>FreeMarker脚本为FreeMarker Template Language</p>
+</li>
+<li><p>FreeMarker提供了大量的内建函数来简化开发</p>
+</li>
+</ul>
+<h3 id="如何使用Freemarker"><a href="#如何使用Freemarker" class="headerlink" title="如何使用Freemarker"></a>如何使用Freemarker</h3><p>我们要定义在<a href https: freemarker.apache.org"">Freemarker官网</a>下载所对应的jar包<br>然后将该jar包放在WEB-INF/lib 下</p>
+<h3 id="书写简单的Freemarker"><a href="#书写简单的Freemarker" class="headerlink" title="书写简单的Freemarker"></a>书写简单的Freemarker</h3><p> 1.加载模板</p>
+<p> 2.创建数据</p>
+<p> 3.结果输出</p>
+<p> 代码</p>
+<pre><code>package com.freemarker;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import freemarker.core.ParseException;
+import freemarker.template.Configuration;
+import freemarker.template.MalformedTemplateNameException;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import freemarker.template.TemplateNotFoundException;
+
+public class FreemarkerSample1 {
+
+public static void main(String[] args) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+    // TODO Auto-generated method stub
+    // 1.加载模板
+    //创建核心配置对象
+    Configuration config=new Configuration(Configuration.VERSION_2_3_29);
+    //设置加载的目录
+    config.setClassForTemplateLoading(FreemarkerSample1.class, &quot;&quot;);//空字符串代表当前包
+    //得到模板对象
+    Template t=config.getTemplate(&quot;sample1.ftl&quot;);
+    // 2.创建数据
+    Map&lt;String,Object&gt; data=new HashMap&lt;String,Object&gt;();   
+    data.put(&quot;site&quot;,&quot;百度&quot;);
+data.put(&quot;url&quot;,&quot;http://www.baidu.com&quot;);
+
+    //. 3.产生输出
+t.process(data,new OutputStreamWriter(System.out));// 字节转字符}
+
+}</code></pre><h2 id="FTL取值"><a href="#FTL取值" class="headerlink" title="FTL取值"></a>FTL取值</h2><ul>
+<li><p>${属性值}</p>
+</li>
+<li><p>${属性值!默认}  属性值不存在的时候默认值输出</p>
+</li>
+<li><p>${属性值？string(“ “)}  规格化输出</p>
+</li>
+</ul>
+<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><pre><code>data.put(&quot;size&quot;,&quot;baidu&quot;);
+data.put(&quot;url&quot;,&quot;www.baidu.com&quot;);</code></pre><p>   在ftl中  </p>
+<pre><code>${size}--${url}</code></pre><p>输出结果</p>
+<blockquote>
+<p>百度–<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+</blockquote>
+<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><pre><code>data.put(&quot;size&quot;,&quot;baidu&quot;);
+
+${sizo?不存在的属性};</code></pre><p>结果：</p>
+<blockquote>
+<p>不存在的属性</p>
+</blockquote>
+<p>说明：</p>
+<p>我们并没有定义sizo属性。所以显示不存在的值。如果不这样写的话。程序会报错。</p>
+<h3 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h3><pre><code>data.put(&quot;number&quot;,8485.2333);</code></pre><p>ftl中<br>    ${number};</p>
+<p>输出结果</p>
+<blockquote>
+<p>8485.2333</p>
+</blockquote>
+<hr>
+<p>说明freemarker默认只保存小数点后三位</p>
+<p>如果想要保存两位数字就要用到格式化输出${属性值？string(“ “)} </p>
+<pre><code>${number？string(&quot;0.00&quot;)};</code></pre><p>输出结果</p>
+<blockquote>
+<p>8485.23</p>
+</blockquote>
+<h3 id="实例4"><a href="#实例4" class="headerlink" title="实例4"></a>实例4</h3><p>日期的输出要用到规格化。</p>
+<pre><code>data.put(&quot;data&quot;,new Data());
+
+$(data?string(&quot;yyyy年MM月dd日  HH:mm:ss SSS&quot;));</code></pre><p>输出结果</p>
+<blockquote>
+<p>2019年9月26日 15:12:122</p>
+</blockquote>
+<h3 id="实例5"><a href="#实例5" class="headerlink" title="实例5"></a>实例5</h3><p>在freemarker中也是可以输出对象</p>
+<p>比如定义一个Computer类<br>属性如下：</p>
+<ul>
+<li>private String sn;//序列号</li>
+<li>private String modle;//电脑品牌</li>
+<li>private int state;//状态</li>
+<li>private String user;//使用人</li>
+<li>private Date dop;//采购日期</li>
+<li>private Float price;</li>
+<li>private Map info;//</li>
+</ul>
+<p>我们注意到info 的属性是Map</p>
+<pre><code>Map info=new HashMap();
+infp.put(&quot;cpu&quot;,&quot;i5&quot;);
+Computer computer=new Computer(&quot;123456&quot;,&quot;Thinkpad&quot;,1,&quot;lucy&quot;,&quot;new Data(),20000f，info);
+data.put(&quot;computer&quot;,computer);</code></pre><p>ftl中</p>
+<pre><code>${computer.sn}
+${computer.modle}
+${computer.state}
+${computer.user}
+${computer.dop?string(&quot;yyyy年MM月dd日  HH:mm:ss SSS&quot;)}
+${computer.info(&quot;cpu&quot;)}</code></pre><p>map中的输出值用[]括起来</p>
+<h2 id="分支判断"><a href="#分支判断" class="headerlink" title="分支判断"></a>分支判断</h2><h2 id="1-if"><a href="#1-if" class="headerlink" title="1.if"></a>1.if</h2><pre><code>&lt;#if 条件1&gt;
+条件1下执行的代码
+&lt;#elseif 条件2&gt;
+条件2下执行的代码
+&lt;#elseif 条件3&gt;
+条件3下执行的代码
+&lt;#else&gt;
+&lt;/#if&gt;</code></pre><h3 id="实例1-1"><a href="#实例1-1" class="headerlink" title="实例1"></a>实例1</h3><pre><code>&lt;#if computer.sn==&quot;123456&quot;&gt;&lt;#-- 字符串判断直接就用== --&gt;
+重要设备
+&lt;/#if&gt;
+
+${computer.modle}
+&lt;#if computer.state==1&gt;
+状态正在使用
+&lt;#elseif compuer.state==2&gt;
+状态闲置
+&lt;#elseif computer.state==3&gt;
+状态已作废
+&lt;/#if&gt;
+&lt;#if computer.user??&gt;  &lt;#--？？判断对象是否是空--&gt;
+用户: ${computer.user}
+&lt;/#if&gt;</code></pre><blockquote>
+<p>Computer computer=new Computer(“123456”,”Thinkpad”,1,”lucy”,”new Data(),20000f，info);</p>
+</blockquote>
+<p>输出</p>
+<blockquote>
+<p>重要设备</p>
+<p>状态正在使用</p>
+<p>lucy</p>
+</blockquote>
+<h2 id="2-switch"><a href="#2-switch" class="headerlink" title="2.switch"></a>2.switch</h2><pre><code>&lt;#switch computer.state&gt;
+&lt;#case 1&gt;
+正在使用
+&lt;#break&gt;
+&lt;#case 2&gt;
+闲置
+&lt;#break&gt;
+&lt;#case 3&gt;
+作废
+&lt;#break&gt;
+&lt;#default&gt;
+无效状态
+&lt;/#switch&gt;</code></pre><h2 id="迭代列表"><a href="#迭代列表" class="headerlink" title="迭代列表"></a>迭代列表</h2><pre><code>&lt;#list list as v&gt;
+&lt;li&gt;${v_index}---${v.name}&lt;/li&gt;
+&lt;/#list&gt;
+
+index是索引值</code></pre><h3 id="实例1-2"><a href="#实例1-2" class="headerlink" title="实例1"></a>实例1</h3><pre><code>&lt;#list computers as c&gt;  迭代集合和集合迭代变量
+序号:${c_index}
+&lt;#-- 迭代变量_index保存了循环的索引，从0开始 --&gt;
+${c_index+1
+&lt;#-- 迭代变量_index保存了循环的索引，从1开始 --&gt;
+${c.sn}
+${c.modle}
+&lt;#switch c.state&gt;
+&lt;#case 1&gt;
+使用中
+&lt;#break&gt;
+&lt;#case 2&gt;
+闲置
+&lt;#break&gt;
+&lt;#case 3&gt;
+作废
+&lt;#break&gt;
+&lt;#default&gt;
+无效
+&lt;/#switch&gt;
+&lt;#if c.user??&gt;
+${c.user}
+&lt;/#if&gt;
+${c.price?string(&quot;0.00&quot;)}
+${c.dop?string(&quot;yyyy年MM月dd日 HH:mm:ss SSS&quot;)}
+&lt;/#list&gt;</code></pre><p>创建数据</p>
+<pre><code>Map&lt;String,Object&gt; data=new HashMap&lt;String,Object&gt;();
+List&lt;Computer&gt; computers=new ArrayList();
+computers.add(new Computer(&quot;123456&quot;,&quot;levet&quot;,1,&quot;dfef&quot;,new Date(),12900f,new HashMap()));    
+computers.add(new Computer(&quot;123456&quot;,&quot;lll&quot;,1,&quot;efef&quot;,new Date(),12900f,new HashMap()));    
+computers.add(new Computer(&quot;123456&quot;,&quot;aa&quot;,3,&quot;fege&quot;,new Date(),12900f,new HashMap()));    
+computers.add(new Computer(&quot;123456&quot;,&quot;EEEE&quot;,2,&quot;nbr&quot;,new Date(),12900f,new HashMap()));    
+computers.add(new Computer(&quot;123456&quot;,&quot;DGGEG&quot;,1,&quot;nfdefel&quot;,new Date(),12900f,new HashMap()));    
+data.put(&quot;computers&quot;,computers);</code></pre><h2 id="迭代Map"><a href="#迭代Map" class="headerlink" title="迭代Map"></a>迭代Map</h2><pre><code>&lt;#list map?keys as key&gt;
+${key}--${map[key]}
+&lt;/#list&gt;</code></pre><h3 id="实例1-3"><a href="#实例1-3" class="headerlink" title="实例1"></a>实例1</h3><pre><code>&lt;#list computer_map?keys as k&gt;
+${k}---${computer_map[k].moble}
+
+&lt;/#list&gt;
+    Map&lt;String,Object&gt; data=new HashMap&lt;String,Object&gt;();
+            List&lt;Computer&gt; computers=new ArrayList();
+            computers.add(new Computer(&quot;123456&quot;,&quot;levet&quot;,1,&quot;dfef&quot;,new Date(),12900f,new HashMap()));    
+            computers.add(new Computer(&quot;1234567&quot;,&quot;lll&quot;,1,&quot;efef&quot;,new Date(),12900f,new HashMap()));    
+            computers.add(new Computer(&quot;1234568&quot;,&quot;aa&quot;,3,&quot;fege&quot;,new Date(),12900f,new HashMap()));    
+            computers.add(new Computer(&quot;1234569&quot;,&quot;EEEE&quot;,2,&quot;nbr&quot;,new Date(),12900f,new HashMap()));    
+            computers.add(new Computer(&quot;12345610&quot;,&quot;DGGEG&quot;,1,&quot;nfdefel&quot;,new Date(),12900f,new HashMap()));    
+            data.put(&quot;computers&quot;,computers);
+           //LinkedHashMap按数据的存放顺序进行保存
+            Map computerMap = new LinkedHashMap();
+            for(Computer c:computers)
+            {
+
+                computerMap.put(c.getSn(),c);
+
+
+
+            }
+
+
+            data.put(&quot;computer_map&quot;,computerMap);</code></pre><h2 id="内键函数"><a href="#内键函数" class="headerlink" title="内键函数"></a>内键函数</h2><ol>
+<li>substring（start,end）从一个字符串中截取子串</li>
+<li>cap_first 首字母大写</li>
+<li>index_of 查找字符索引</li>
+<li>length 返回字符串长度</li>
+<li>round/floor/ceiling 四舍五入/下取整/上取整</li>
+<li>size 得到集合元素的总数</li>
+<li>first/last 获得第一个/最后一个元素</li>
+<li>sort_by 按某个属性值对集合排序</li>
+<li>upper_case/lower_case  字母变成大写/小写</li>
+</ol>
+<h3 id="实例1-4"><a href="#实例1-4" class="headerlink" title="实例1"></a>实例1</h3><ul>
+<li><p>${name?cap_first}</p>
+<blockquote>
+<p>结果 Jackson</p>
+</blockquote>
+</li>
+<li><p>${brand?upper_case}</p>
+<blockquote>
+<p>结果 BMW</p>
+</blockquote>
+</li>
+<li><p>${BRAND?lower_case} </p>
+<blockquote>
+<p>结果 bmw</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>data.put(&quot;name&quot;,&quot;jackson&quot;);
+ data.put(&quot;brand&quot;,&quot;bmw&quot;);</code></pre><p>=</p>
+<h3 id="实例2-1"><a href="#实例2-1" class="headerlink" title="实例2"></a>实例2</h3><p>-${words?index_of(“blood”)}</p>
+<blockquote>
+<p>结果 6</p>
+</blockquote>
+<p>-${words?replace(“blood”,”****”)}</p>
+<blockquote>
+<p>结果 first ****</p>
+</blockquote>
+<pre><code>data.put(&quot;words&quot;,&quot;first blood&quot;);</code></pre><h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h3><pre><code>&lt;#-- 利用？string实现三目运算符的操作 --&gt;
+
+${(words?index_of(&quot;blood&quot;)!=-1)?string(&quot;包含敏感词汇&quot;,&quot;不包含敏感词汇&quot;)}</code></pre><ul>
+<li><p>${n?round}</p>
+<blockquote>
+<p>答案:37982</p>
+</blockquote>
+</li>
+<li><p>${n?floor}</p>
+<blockquote>
+<p>答案:37981</p>
+</blockquote>
+</li>
+<li><p>${n?ceiling} </p>
+<blockquote>
+<p>答案:37982</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>data.put(&quot;n&quot;,37981.83);</code></pre><h3 id="实例4-1"><a href="#实例4-1" class="headerlink" title="实例4"></a>实例4</h3><pre><code>${computers?size}
+${computers?first.modle}
+${computers?last.modle}</code></pre><p>&lt;#– 集合排序 –&gt;</p>
+<pre><code>&lt;#list computers?sort_by(&quot;price&quot;)as c&gt;
+${c.sn}--${c.price}
+&lt;/#list&gt;
+
+&lt;#list computers?sort_by(&quot;price&quot;)?reverse as c&gt;&lt;#-- 反方向排序 --&gt;
+${c.sn}--${c.price}
+&lt;/#list&gt;</code></pre><h2 id="freemmarker与servlet整合"><a href="#freemmarker与servlet整合" class="headerlink" title="freemmarker与servlet整合"></a>freemmarker与servlet整合</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>1.在eclipse中新建javaWeb工程</p>
+<p>2.添加依赖jar包</p>
+<p>3.在web.xml中添加freemarker的servlet配置 </p>
+<pre><code>&lt;servlet&gt;
+  &lt;servlet-name&gt;freemarker&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;freemarker.ext.servlet.FreemarkerServlet&lt;/servlet-class&gt;
+  &lt;init-param&gt;
+&lt;param-name&gt;TemplatePath&lt;/param-name&gt;//这个是如果请求的名称是.ftl  就到这个TemplatePath：/WEB-INF/ftl  去寻找那个文件。
+&lt;param-value&gt;/WEB-INF/ftl&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;freemarker&lt;/servlet-name&gt;
+&lt;url-pattern&gt;*.ftl&lt;/url-pattern&gt;//
+&lt;/servlet-mapping&gt;</code></pre><p>4.新建servlet</p>
+<pre><code>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List list=new ArrayList();
+        list.add(new Employee(7731,&quot;zhangsan&quot;,&quot;shichangbu&quot;,&quot;kehudaibiao&quot;,80000f));
+        list.add(new Employee(7732,&quot;zhangsang&quot;,&quot;shichangbu&quot;,&quot;kehudaibiao&quot;,81000f));
+        request.setAttribute(&quot;employee_list&quot;, list);
+        request.getRequestDispatcher(&quot;/employee.ftl&quot;).forward(request, response);
+
+
+    }</code></pre><p>5.写ftl 文件</p>
+<pre><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;
+                &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;序号&lt;/th&gt;
+                    &lt;th&gt;员工编号&lt;/th&gt;
+                    &lt;th&gt;姓名&lt;/th&gt;
+                    &lt;th&gt;部门&lt;/th&gt;
+                    &lt;th&gt;职务&lt;/th&gt;
+                    &lt;th&gt;工资&lt;/th&gt;
+                    &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                &lt;#list employee_list as emp&gt;   //emploeelist的请求范围是从请求 会话 context中获取   不管servlet请求对象换成谁。这里都不用变
+                &lt;tr&gt;
+                    &lt;td&gt;${emp_index+1}&lt;/td&gt;
+                    &lt;td&gt;${emp.empno?string(&quot;0&quot;)}&lt;/td&gt;
+                    &lt;td&gt;${emp.ename}&lt;/td&gt;
+
+                    &lt;td&gt;${emp.department}&lt;/td&gt;
+                    &lt;td&gt;${emp.job}&lt;/td&gt;
+                    &lt;td style=&quot;color: red;font-weight: bold&quot;&gt;${emp.salary?string(&quot;0.00&quot;)}&lt;/td&gt;
+
+                &lt;/tr&gt;
+              &lt;/#list&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;</code></pre>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Freemarker/" rel="tag"><i class="fa fa-google"></i> Freemarker</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/09/25/java双指针--盛最多水的容器/" rel="next" title="小张今天leetcode了吗">
+                <i class="fa fa-chevron-left"></i> 小张今天leetcode了吗
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="苍糜">
+  <p class="site-author-name" itemprop="name">苍糜</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/cangmis" title="GitHub &rarr; https://github.com/cangmis" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/1976045181" title="Weibo &rarr; https://weibo.com/u/1976045181" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模板引擎"><span class="nav-number">1.</span> <span class="nav-text">模板引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是模板引擎"><span class="nav-number">1.1.</span> <span class="nav-text">什么是模板引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主流模板引擎"><span class="nav-number">1.2.</span> <span class="nav-text">主流模板引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Freemarker"><span class="nav-number">1.3.</span> <span class="nav-text">Freemarker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用Freemarker"><span class="nav-number">1.4.</span> <span class="nav-text">如何使用Freemarker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书写简单的Freemarker"><span class="nav-number">1.5.</span> <span class="nav-text">书写简单的Freemarker</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTL取值"><span class="nav-number">2.</span> <span class="nav-text">FTL取值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1"><span class="nav-number">2.1.</span> <span class="nav-text">实例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2"><span class="nav-number">2.2.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例3"><span class="nav-number">2.3.</span> <span class="nav-text">示例3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例4"><span class="nav-number">2.4.</span> <span class="nav-text">实例4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例5"><span class="nav-number">2.5.</span> <span class="nav-text">实例5</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支判断"><span class="nav-number">3.</span> <span class="nav-text">分支判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-if"><span class="nav-number">4.</span> <span class="nav-text">1.if</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1-1"><span class="nav-number">4.1.</span> <span class="nav-text">实例1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-switch"><span class="nav-number">5.</span> <span class="nav-text">2.switch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代列表"><span class="nav-number">6.</span> <span class="nav-text">迭代列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1-2"><span class="nav-number">6.1.</span> <span class="nav-text">实例1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代Map"><span class="nav-number">7.</span> <span class="nav-text">迭代Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1-3"><span class="nav-number">7.1.</span> <span class="nav-text">实例1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内键函数"><span class="nav-number">8.</span> <span class="nav-text">内键函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1-4"><span class="nav-number">8.1.</span> <span class="nav-text">实例1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2-1"><span class="nav-number">8.2.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例3"><span class="nav-number">8.3.</span> <span class="nav-text">实例3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例4-1"><span class="nav-number">8.4.</span> <span class="nav-text">实例4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#freemmarker与servlet整合"><span class="nav-number">9.</span> <span class="nav-text">freemmarker与servlet整合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">9.1.</span> <span class="nav-text">步骤</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">苍糜</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+      
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="true"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
