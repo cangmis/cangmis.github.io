@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL基础之数据类型]]></title>
+    <url>%2F2019%2F10%2F09%2FMySQL%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[1.什么是数据库 数据库是按照数据结构来组合，存储和管理数据的仓库 1.1常见数据库 Oracle DB2 SQL Server Postgre SQL MySQL1.2相关术语 数据库系统DBS 数据库 数据库管理系统 应用开发工具 管理员及用户 SQL语言Structured Query Language：结构化查询语言 DDL 数据定义语言 DML 数据操作语言 DQL 数据查询语言 DCL 数据控制语言 2 MYSQL相关操作2.1配置文件my.ini是MySQL的配置文件 2.2登陆/退出MySQL2.2.1登陆 mysql -uroot -p mysql uroot -proot得到版本号 mysql -V mysql –version登陆时候同时打开指定的数据库 mysql -uroot -p -D db_name 2.2.2退出 exit quit 2.2.3 登陆信息中需要掌握的 命令行结束符默认使用;或者\g来结束 可以通过help或者\h或者？加上相关关键字来查看手册 \c可以取消当前命令的执行 2.3 SQL语句语法规范 常用MySQL的关键字我们需要大写 库名，表名字段名称使用小写 SQL语句支持拆行操作，但是不能把完整的单词拆开 数据库名称，表名称，字段名称不要使用MySQL的保留字，如果使用需要用反引号``将其括起来. 2.4 常用SQL语句 SELECT USER() 得到登陆用户 SELECT VERSION() 得到MySQL的版本信息 SELECT NOW() 得到当前的日期时间 SELECT DATABASE() 得到当前打开的数据库 3.数据库的相关操作3.1创建数据库CREATE{DATABASE|SCHEMA}db_name; 检测数据库名称是否存在，不存在则创建 CREATE DATABASE [IF NOT EXISTS] db_name; 在创建数据库的时候指定编码方式 CREATE DATABASE [IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET [=] charset; 3.2查看当前服务器下全部数据库SHOW DATABASES|SCHEMAS; 3.2查看指定数据库的详细信息SHOW CREATE DATABASE db_name; 3.3修改指定数据库的编码方式ALTER DATABASE db_name [DEFAULT] CHARACTER SET [=] charset; 3.4打开指定数据库USE db_name; 3.5得到当前打开的数据库SELECT DATABASE()|SCHEMA(); 3.6删除指定的数据库DROP DATABASE db_name; 如果数据库存在则删除DROP DATABASE [IF EXISTS] db_name; 4数据表的相关操作4.1数据表 是数据库最重要的组成部分之一，数据是保存在数据表中 数据表由行(row)和列(column)来组成 每个数据表中至少有一列，行可以有零行一行或者多行组成 表名要求唯一，不要包含特殊字符，最好含义明确 4.2创建表 CREATE TABLE [IF NOT EXISTS] tbl_name( 字段名称 字段类型 [完整性约束条件], 字段名称 字段类型 [完整性约束条件], ... )ENGINE=存储引擎 CHARSET=编码方式; 完整性约束条件： UNSIGNED无符号，没有负数，从0开始 ZEROFILL零填充，当数据的显示长度不够的时候可以使用前补0的效果填充至指定长度,字段会自动添加UNSIGNED NOT NULL非空约束，也就是插入值的时候这个字段必须要给值,值不能为空 DEFAULT默认值，如果插入记录的时候没有给字段赋值，则使用默认值 PRIMARY KEY主键，标识记录的唯一性，值不能重复，一个表只能有一个主键，自动禁止为空 AUTO_INCREMENT自动增长，只能用于数值列，而且配合索引使用,默认起始值从1开始，每次增长1 UNIQUE KEY唯一性，一个表中可以有多个字段是唯一索引，同样的值不能重复，但是NULL值除外 FOREIGN KEY外键约束 4.3查看当前数据库下已有的数据表 SHOW TABLES; SHOW [FULL] TABLES [{FROM | IN} db_name][LIKE ‘pattern’ | WHERE expr] 4.4查看表结构 DESC tbl_name; DESCRIBE tbl_name; SHOW COLUMNS FROM tbl_name; 4.5查看指定数据表的详细信息SHOW CREATE TABLE tbl_name; 4.6删除数据表DROP TABLE [IF EXISTS] tbl_name; 4.7 表结构相关操作 添加字段 ALTER TABLE tbl_name ADD 字段名称 字段属性 [完整性约束条件] [FIRST|AFTER 字段名称] 删除字段 ALTER TABLE tbl_name DROP 字段名称 添加默认值 ALTER TABLE tbl_name ALTER 字段名称 SET DEFAULT 默认值; 删除默认值 ALTER TABLE tbl_name ALTER 字段名称 DROP DEFAULT 修改字段类型、字段属性 ALTER TABLE tbl_name MODIFY 字段名称 字段类型 [字段属性] [FIRST | AFTER 字段名称] 修改字段名称、字段类型、字段属性 ALTER TABLE tbl_name CHANGE 原字段名称 新字段名称 字段类型 字段属性 [FIRST | AFTER 字段名称] 添加主键 ALTER TABLE tbl_name ADD PRIMARY KEY(字段名称) 删除主键 ALTER TABLE tbl_name DROP PRIMARY KEY; 添加唯一 ALTER TABLE tbl_name ADD UNIQUE KEY|INDEX [index_name] (字段名称) 删除唯一 ALTER TABLE tbl_name DROP index_name; 修改数据表名称 ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name RENAME TABLE tbl_name TO new_tbl_name; 修改AUTO_INCREMENT的值 ALTER TABLE tbl_name AUTO_INCREMENT=值 5.MYSQL中的数据类型5.1数值型整数型 浮点型 5.2字符串类型 字符串类型 CHAR效率高于VARCHAR,CHAR相当于拿空间换时间，VARCHAR拿时间换空间CHAR默认存储数据的时候，后面会用空格填充到指定长度；而在检索的时候会去掉后面空格；VARCHAR在保存的时候不进行填充，尾部的空格会留下TEXT列不能有默认值,检索的时候不存在大小写转换 5.3日期时间类型]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2F2019%2F09%2F29%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[title: 小张今天leetcode了吗date: 2019-09-28 22:10:28tags: -leetcodecategories: leetcode —0 反思 这种方法代码写的又臭又长。后来看了官方的代码。有了点思路。 我其实没必要判断剩下的串的长度是不是大于k小于2*k，还是小于k。 只用判断翻转边界即可，在翻转边界之内进行翻转。然后指向边界开头的指针i每次指的位置的索引都加上2*k; 官方代码思路把一个字符串分成块，定义两个变量i，j i指向每个块2k的第一个， j指向2k中的k的位置。然后通过i++，j–进行反转交换如果这个最后一个块不满足k个元素了。那么通过j = Math.min(i+ k - 1, a.length - 1);来确定块边界位置，从而进行翻转 代码class Solution { public String reverseStr(String s, int k) { char[] a=s.toCharArray(); for(int i=0;i&lt;a.length;i=i+2*k) { int ss=i; int j=Math.min(a.length-1,i+k-1); while(ss&lt;j) { char temp=a[ss]; a[ss++]=a[j]; a[j–]=temp; } } return new String(a); }}]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[小张今天leetcode了吗]]></title>
+    <url>%2F2019%2F09%2F29%2F%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%97%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[题目:最长回文子串 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。 示例 1： 输入: “babad”输出: “bab”注意: “aba” 也是一个有效答案。示例 2： 输入: “cbbd”输出: “bb” 中心扩展算法通过观察回文串的特点我们知道，回文串是以中心为对称轴两边镜像的。 那么我们就遍历整个字符串，把每个字符作为中心轴，这是假设回文串长度是奇数的情况下。 还有一种情况是假设回文串长度是偶数。那么就以该字符和下一个字符的中间为中心轴。 确定好中心轴之后我们就要开始展开。 如果该字符的前面一个和该字符的后面一个字符相等的话就扩展范围。再比较前面的第二个和后面的第二个依次类推。 返回每次范围长度，取最长为答案。 代码class Solution { public String longestPalindrome(String s) { if(s==null||s.length()&lt;1) return &quot;&quot;;//特例判断如果字符串的长度为0,或者为null返回空字符串 int len=s.length(); int start=0; int end=0; for(int i=0;i&lt;len;i++) { int len1=centerexpand(s,i,i);//假设回文串长度为奇数的情况 int len2=centerexpand(s,i,i+1);//假设回文串长度为偶数的情况 int len3=Math.max(len1,len2); //更新开始start和结束end的值。 if(len3&gt;end-start) { start=i-(len3-1)/2; end=i+len3/2; } } return s.substring(start,end+1);} public int centerexpand(String s,int left,int right) { while(left&gt;=0&amp;&amp;right&lt;s.length()&amp;&amp;s.charAt(left)==s.charAt(right))//如果满足进行扩展，并更新边界索引值。 { left--; right++; } return right-left-1; } }暴力暴力的思路很简单，但是时间复杂度很高是O(n³)。 需要一个函数来单独判断是不是回文串。判断第一个和最后一个是否相等。第二个与倒数第二个是否相等..按顺序依次比较。 如果是的话返回true。否则返回flase. 再双层循环遍历该字符串，i作为字符串的开头。j作为字符串的结尾。对每次判断截取的字符串s.substring(i,j) 判断是不是回文串.如果是则记录下该字符串长度。用ans保存长度的最大值。最后的ans为答案。]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>-leetcode--字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[小张今天leetcode了吗]]></title>
     <url>%2F2019%2F09%2F29%2F%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80%2F</url>
     <content type="text"><![CDATA[题目：最长公共前缀 编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回空字符串 “”。 示例 1: 输入: [“flower”,”flow”,”flight”]输出: “fl”示例 2: 输入: [“dog”,”racecar”,”car”]输出: “”解释: 输入不存在公共前缀。 思路1考虑特例:如果字符数组只有一个字符串则返回为该字符串。 以字符数组中的第一个字符串作为基础字符串，如果基础字符串为空，返回空，如果不为空，则与后面n个字符串进行比较。 把基准字符串转换程字符数组。把它后续要比较的字符串也转换成字符数组。同样如果被比较的字符数组为空也返回空。 然后定义一个计数器，记录基准字符串和后续的字符串相同的位数是几位。定义一个变量sum记录每次比较计数数值最小的那个。 当比较结束之后得到sum。将目标数组的前sum个字符输出就是最长公共长缀。 代码 class Solution { public String longestCommonPrefix(String[] strs) { if(strs.length==0) return “”; if(strs.length==1) return (String)strs[0]; char[] a=strs[0].toCharArray(); if(a.length==0) return “”; int sum=a.length; for(int j=1;j&lt;strs.length;j++) { int count=0; char [] aa=strs[j].toCharArray(); if(aa.length==0) { return “”; } for(int i=0;i&lt;aa.length&amp;&amp;i&lt;a.length ;i++) { if(aa[i]==a[i]) { count++; } else { break; } } sum=Math.min(sum,count); } String longl =””; for(int i=0;i&lt;sum;i++) { longl=longl+a[i]; } return longl; }} 思路2也是把第一个字符串作为基础字符串。然后每次和后面的字符串进行判断。利用indexOf(prefix) != 0 来说明该字符串不是它的公共前缀，那么就要进行剪切。 直到剪切后的字符串是后面的每个字符串的公共前缀，如果该字符剪切到长度为零了，证明没有公共前缀。返回null。 代码public String longestCommonPrefix(String[] strs) { if (strs.length == 0) return “”; String ss= strs[0]; for (int i = 1; i &lt; strs.length; i++) while (strs[i].indexOf(ss) != 0) { ss = ss.substring(0, ss.length() - 1); if (ss.isEmpty()) return “”; } return ss;}]]></content>
@@ -8,18 +35,7 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>-leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[小张今天leetcode了吗]]></title>
-    <url>%2F2019%2F09%2F28%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
-    <content type="text"><![CDATA[题目：反转字符串 给定一个字符串和一个整数 k，你需要对从字符串开头算起的每个 2k 个字符的前k个字符进行反转。如果剩余少于 k个字符，则将剩余的所有全部反转。如果有小于 2k 但大于或等于 k 个字符，则反转前 k 个字符，并将剩余的字符保持原样。 示例: 输入: s = “abcdefg”, k = 2输出: “bacdfeg”要求: 该字符串只包含小写的英文字母。给定字符串的长度和 k 在[1, 10000]范围内。 思路1如果该字符串大于等于2k个字符，那么就截取前2k，将他们变成数组进行翻转。然后处理后的串用ss来保存，ss=翻转后的串+之前截取剩下的 串+ss的前次保存的串。更新s串的长度，使它变成原来的长度-2k不断循环,直到s 的长度不大于等于2k； 此时如果现在剩下的长度大于等于k。那么前k个字符进行翻转。更新ss。 否则得话如果剩下的长度不大0小于k，那么剩下的所有字符进行翻转，更新ss。 最后返回ss。 代码class Solution { public String reverseStr(String s, int k) { String ss=””; while(s.length()&gt;=2*k) { String as=s.substring(0,2*k);//截取前2*k个字符 char []a=as.toCharArray(); char[] b=new char[k]; char t; for(int i=0,j=k-1;i&lt;k;i++,j--) { t=a[i]; b[j]=t; } ss=ss+String.valueOf(b)+as.substring(k); s=s.substring(2*k); } if(s.length()&gt;=k) { char[]a=s.toCharArray(); char []b=new char[k]; char u; for(int i=0,j=k-1;i&lt;k;i++,j--) { u=a[i]; b[j]=u; } ss=ss+String.valueOf(b)+s.substring(k); } else if(s.length()&gt;0) {char[]b=new char[s.length()]; char[]a=s.toCharArray(); char t; for(int i=0,j=s.length()-1;i&lt;s.length();i++,j--) { t=a[i]; b[j]=t; } ss=ss+String.valueOf(b); } return ss; }} 反思 这种方法代码写的又臭又长。后来看了官方的代码。有了点思路。 我其实没必要判断剩下的串的长度是不是大于k小于2*k，还是小于k。 只用判断翻转边界即可，在翻转边界之内进行翻转。然后指向边界开头的指针i每次指的位置的索引都加上2*k; 官方代码思路把一个字符串分成块，定义两个变量i，j i指向每个块2k的第一个， j指向2k中的k的位置。然后通过i++，j–进行反转交换如果这个最后一个块不满足k个元素了。那么通过j = Math.min(i+ k - 1, a.length - 1);来确定块边界位置，从而进行翻转 代码class Solution { public String reverseStr(String s, int k) { char[] a=s.toCharArray(); for(int i=0;i&lt;a.length;i=i+2*k) { int ss=i; int j=Math.min(a.length-1,i+k-1); while(ss&lt;j) { char temp=a[ss]; a[ss++]=a[j]; a[j–]=temp; } } return new String(a); }}]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>-leetcode</tag>
+        <tag>-leetcode--字符串</tag>
       </tags>
   </entry>
   <entry>
