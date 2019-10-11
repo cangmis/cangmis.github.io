@@ -12,9 +12,15 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>%2F2019%2F09%2F29%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
-    <content type="text"><![CDATA[title: 小张今天leetcode了吗date: 2019-09-28 22:10:28tags: -leetcodecategories: leetcode —0 反思 这种方法代码写的又臭又长。后来看了官方的代码。有了点思路。 我其实没必要判断剩下的串的长度是不是大于k小于2*k，还是小于k。 只用判断翻转边界即可，在翻转边界之内进行翻转。然后指向边界开头的指针i每次指的位置的索引都加上2*k; 官方代码思路把一个字符串分成块，定义两个变量i，j i指向每个块2k的第一个， j指向2k中的k的位置。然后通过i++，j–进行反转交换如果这个最后一个块不满足k个元素了。那么通过j = Math.min(i+ k - 1, a.length - 1);来确定块边界位置，从而进行翻转 代码class Solution { public String reverseStr(String s, int k) { char[] a=s.toCharArray(); for(int i=0;i&lt;a.length;i=i+2*k) { int ss=i; int j=Math.min(a.length-1,i+k-1); while(ss&lt;j) { char temp=a[ss]; a[ss++]=a[j]; a[j–]=temp; } } return new String(a); }}]]></content>
+    <title><![CDATA[小张今天leetcode了吗]]></title>
+    <url>%2F2019%2F09%2F29%2F%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E5%92%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E7%BB%84%E5%90%88%2F</url>
+    <content type="text"><![CDATA[题目 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。2–abc3–def4–ghi5–jkl6–mno7–pqrs8–tuv9–wxyz 示例: 输入：”23”输出：[“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].说明:尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。 思路先把数字和字符的映射关系都存到map中，注意map在调用put方法时候不能在类体中执行，需要在方法中或是静态块中执行。所以我们要把它放在某个特定的方法中。 这道题用到了回溯的思想，也就是穷举所有可能，定义一个back回溯函数，变量是connection字符串用于存放符合题意的中间字符串。再定义一个index字符串变量用来保存接下来每个数字。遍历该数字对应的字符串的所有字符。如果可行的话就将字符添加到connection字符串后面。如果不可行的话就回溯到上一次执行的地方。 具体操作：设定一个list用来存储要输出的字符串。 在back中将输入的数字截取字符串分割成每个单个数字。然后从map中提取对应的键值。再对键值中的字符串进行分割提取每个字符。将该字符添加到connection后面，将该字符如果后面还有数字的话，就往下走寻找下一个数字对应的字符串中的某个字符。如果没有数字了，就把connection字符串添加到list中。回溯到上一次指定的地方，直到没有可能的地方走。 代码class Solution { List outputlist=new ArrayList&lt;&gt;(); public void back(String connection,String index) { Map&lt;String,String&gt;map=new HashMap&lt;&gt;(); map.put(“2”,”abc”); map.put(“3”,”def”); map.put(“4”,”ghi”); map.put(“5”,”jkl”); map.put(“6”,”mno”); map.put(“7”,”pqrs”); map.put(“8”,”tuv”); map.put(“9”,”wxyz”); if(index.length()==0) { outputlist.add(connection); } else { String aindex=index.substring(0,1); String last=map.get(aindex); for(int i=0;i&lt;last.length();i++) { String alast=last.substring(i,i+1); back(connection+alast,index.substring(1)); } } } public List&lt;String&gt; letterCombinations(String digits) { if(digits.length()!=0) { back(&quot;&quot;,digits); } return outputlist; }}]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>-leetcode--字符串</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[小张今天leetcode了吗]]></title>
@@ -36,6 +42,17 @@
       </categories>
       <tags>
         <tag>-leetcode--字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小张今天leetcode了吗]]></title>
+    <url>%2F2019%2F09%2F28%2F%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[题目 给定一个字符串和一个整数 k，你需要对从字符串开头算起的每个 2k 个字符的前k个字符进行反转。如果剩余少于 k 个字符，则将剩余的所有全部反转。如果有小于 2k 但大于或等于 k 个字符，则反转前 k 个字符，并将剩余的字符保持原样。 示例: 输入: s = “abcdefg”, k = 2输出: “bacdfeg”要求: 该字符串只包含小写的英文字母。给定字符串的长度和 k 在[1, 10000]范围内。 思路如果该字符串的长度大于2k,那么就截取它前2k个字符。进行翻转。 如果该字符串的长度小于2*k。但是大于k;直接将前k个进行翻转。 如果该字符串的长度小于k。就把这些字符都进行翻转。 每次翻转后都要截取掉翻转后的字符串。将剩余的字符串进行判断。 代码class Solution { public String reverseStr(String s, int k) { String ss=&quot;&quot;; while(s.length()&gt;=2*k) { String as=s.substring(0,2*k);//截取前2*k个字符 char []a=as.toCharArray(); char[] b=new char[k]; char t; for(int i=0,j=k-1;i&lt;k;i++,j--) { t=a[i]; b[j]=t; } ss=ss+String.valueOf(b)+as.substring(k); s=s.substring(2*k); } if(s.length()&gt;=k) { char[]a=s.toCharArray(); char []b=new char[k]; char u; for(int i=0,j=k-1;i&lt;k;i++,j--) { u=a[i]; b[j]=u; } ss=ss+String.valueOf(b)+s.substring(k); } else if(s.length()&gt;0) {char[]b=new char[s.length()]; char[]a=s.toCharArray(); char t; for(int i=0,j=s.length()-1;i&lt;s.length();i++,j--) { t=a[i]; b[j]=t; } ss=ss+String.valueOf(b); } return ss; } }反思 这种方法代码写的又臭又长。后来看了官方的代码。有了点思路。 我其实没必要判断剩下的串的长度是不是大于k小于2*k，还是小于k。 只用判断翻转边界即可，在翻转边界之内进行翻转。然后指向边界开头的指针i每次指的位置的索引都加上2*k; 官方代码思路把一个字符串分成块，定义两个变量i，j i指向每个块2k的第一个， j指向2k中的k的位置。然后通过i++，j–进行反转交换如果这个最后一个块不满足k个元素了。那么通过j = Math.min(i+ k - 1, a.length - 1);来确定块边界位置，从而进行翻转 代码class Solution { public String reverseStr(String s, int k) { char[] a=s.toCharArray(); for(int i=0;i&lt;a.length;i=i+2*k) { int ss=i; int j=Math.min(a.length-1,i+k-1); while(ss&lt;j) { char temp=a[ss]; a[ss++]=a[j]; a[j–]=temp; } } return new String(a); }}]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>-leetcode</tag>
       </tags>
   </entry>
   <entry>
