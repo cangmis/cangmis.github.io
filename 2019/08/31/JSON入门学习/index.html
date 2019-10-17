@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Cangmi">
 <meta property="og:description" content="什么是JSON 是一种轻量级的数据交换格式。他基于 javascript 语法的子集，即数组和对象表示。  采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率.   客户端向服务器端发送请求后，服务器端怎么才能把用户需要的数据返回给客户端呢。这时我们就需要用一个指定的格">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-19T02:37:12.547Z">
+<meta property="og:updated_time" content="2019-10-17T06:41:57.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSON入门学习">
 <meta name="twitter:description" content="什么是JSON 是一种轻量级的数据交换格式。他基于 javascript 语法的子集，即数组和对象表示。  采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率.   客户端向服务器端发送请求后，服务器端怎么才能把用户需要的数据返回给客户端呢。这时我们就需要用一个指定的格">
@@ -292,7 +292,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-19 10:37:12" itemprop="dateModified" datetime="2019-09-19T10:37:12+08:00">2019-09-19</time>
+                <time title="修改时间：2019-10-17 14:41:57" itemprop="dateModified" datetime="2019-10-17T14:41:57+08:00">2019-10-17</time>
               </span>
             
           
@@ -378,7 +378,29 @@
 ]</code></pre><h3 id="可以用JSON来代替xml"><a href="#可以用JSON来代替xml" class="headerlink" title="可以用JSON来代替xml"></a>可以用JSON来代替xml</h3><h4 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h4><pre><code>&lt;student name=&quot;xiaoming&quot;&gt;
 &lt;sex&gt;female&lt;/sex&gt;
 &lt;age&gt;26&lt;/age&gt;
-&lt;/student&gt;        </code></pre><h4 id="替代后"><a href="#替代后" class="headerlink" title="替代后"></a>替代后</h4><pre><code>[{&quot;name&quot;:&quot;xiaoming&quot;,&quot;sex&quot;:&quot;female&quot;,&quot;age&quot;:&quot;26&quot;}]</code></pre><h2 id="javascripe访问JSON对象"><a href="#javascripe访问JSON对象" class="headerlink" title="javascripe访问JSON对象"></a>javascripe访问JSON对象</h2><h6 id="JSON就相当于一个大数组-在javasripe中我们用访问数组的方式访问JSON就可以-一下是实例"><a href="#JSON就相当于一个大数组-在javasripe中我们用访问数组的方式访问JSON就可以-一下是实例" class="headerlink" title="JSON就相当于一个大数组,在javasripe中我们用访问数组的方式访问JSON就可以.一下是实例:"></a>JSON就相当于一个大数组,在javasripe中我们用访问数组的方式访问JSON就可以.一下是实例:</h6><pre><code>&lt;!DOCTYPE html&gt;
+&lt;/student&gt;        </code></pre><h4 id="替代后"><a href="#替代后" class="headerlink" title="替代后"></a>替代后</h4><pre><code>[{&quot;name&quot;:&quot;xiaoming&quot;,&quot;sex&quot;:&quot;female&quot;,&quot;age&quot;:&quot;26&quot;}]</code></pre><h2 id="javascript访问JSON对象"><a href="#javascript访问JSON对象" class="headerlink" title="javascript访问JSON对象"></a>javascript访问JSON对象</h2><h6 id="JSON就相当于一个大数组-在javasript中我们用访问数组的方式访问JSON就可以-一下是实例"><a href="#JSON就相当于一个大数组-在javasript中我们用访问数组的方式访问JSON就可以-一下是实例" class="headerlink" title="JSON就相当于一个大数组,在javasript中我们用访问数组的方式访问JSON就可以.一下是实例:"></a>JSON就相当于一个大数组,在javasript中我们用访问数组的方式访问JSON就可以.一下是实例:</h6><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><pre><code>&lt;body&gt;
+&lt;h2&gt;在 JavaScript 中创建 JSON 对象&lt;/h2&gt;
+
+&lt;p&gt;
+Name: &lt;span id=&quot;jname&quot;&gt;&lt;/span&gt;&lt;br /&gt;
+Age: &lt;span id=&quot;jage&quot;&gt;&lt;/span&gt;&lt;br /&gt;
+Address: &lt;span id=&quot;jstreet&quot;&gt;&lt;/span&gt;&lt;br /&gt;
+Phone: &lt;span id=&quot;jphone&quot;&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+var JSONObject= {
+&quot;name&quot;:&quot;Bill Gates&quot;,
+&quot;street&quot;:&quot;Fifth Avenue New York 666&quot;,
+&quot;age&quot;:56,
+&quot;phone&quot;:&quot;555 1234567&quot;};
+document.getElementById(&quot;jname&quot;).innerHTML=JSONObject.name
+document.getElementById(&quot;jage&quot;).innerHTML=JSONObject.age
+document.getElementById(&quot;jstreet&quot;).innerHTML=JSONObject.street
+document.getElementById(&quot;jphone&quot;).innerHTML=JSONObject.phone
+ &lt;/script&gt;
+ &lt;/body&gt;</code></pre><h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><pre><code>&lt;/html&gt;
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -667,7 +689,7 @@ public class FastJson2 {
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -739,7 +761,9 @@ public class FastJson2 {
         
           
         
-        <span class="site-state-item-count">17</span>
+          
+        
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -784,7 +808,7 @@ public class FastJson2 {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是JSON"><span class="nav-number">1.</span> <span class="nav-text">什么是JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON的语法规则"><span class="nav-number">2.</span> <span class="nav-text">JSON的语法规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可以用JSON来代替xml"><span class="nav-number">2.1.</span> <span class="nav-text">可以用JSON来代替xml</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#xml"><span class="nav-number">2.1.1.</span> <span class="nav-text">xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替代后"><span class="nav-number">2.1.2.</span> <span class="nav-text">替代后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascripe访问JSON对象"><span class="nav-number">3.</span> <span class="nav-text">javascripe访问JSON对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#JSON就相当于一个大数组-在javasripe中我们用访问数组的方式访问JSON就可以-一下是实例"><span class="nav-number">3.0.0.0.1.</span> <span class="nav-text">JSON就相当于一个大数组,在javasripe中我们用访问数组的方式访问JSON就可以.一下是实例:</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON与字符串的互相转换"><span class="nav-number">4.</span> <span class="nav-text">JSON与字符串的互相转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">4.0.1.</span> <span class="nav-text">实例:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON与java的交互"><span class="nav-number">5.</span> <span class="nav-text">JSON与java的交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJSON的下载和安装"><span class="nav-number">5.1.</span> <span class="nav-text">FastJSON的下载和安装:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJson对象序列化与反序列化和JSON注解"><span class="nav-number">5.2.</span> <span class="nav-text">FastJson对象序列化与反序列化和JSON注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJSON对象数组序列化和反序列化"><span class="nav-number">5.3.</span> <span class="nav-text">FastJSON对象数组序列化和反序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">5.4.</span> <span class="nav-text">实例:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是JSON"><span class="nav-number">1.</span> <span class="nav-text">什么是JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON的语法规则"><span class="nav-number">2.</span> <span class="nav-text">JSON的语法规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可以用JSON来代替xml"><span class="nav-number">2.1.</span> <span class="nav-text">可以用JSON来代替xml</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#xml"><span class="nav-number">2.1.1.</span> <span class="nav-text">xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替代后"><span class="nav-number">2.1.2.</span> <span class="nav-text">替代后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript访问JSON对象"><span class="nav-number">3.</span> <span class="nav-text">javascript访问JSON对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#JSON就相当于一个大数组-在javasript中我们用访问数组的方式访问JSON就可以-一下是实例"><span class="nav-number">3.0.0.0.1.</span> <span class="nav-text">JSON就相当于一个大数组,在javasript中我们用访问数组的方式访问JSON就可以.一下是实例:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON与字符串的互相转换"><span class="nav-number">4.</span> <span class="nav-text">JSON与字符串的互相转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">4.0.1.</span> <span class="nav-text">实例:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON与java的交互"><span class="nav-number">5.</span> <span class="nav-text">JSON与java的交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJSON的下载和安装"><span class="nav-number">5.1.</span> <span class="nav-text">FastJSON的下载和安装:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJson对象序列化与反序列化和JSON注解"><span class="nav-number">5.2.</span> <span class="nav-text">FastJson对象序列化与反序列化和JSON注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJSON对象数组序列化和反序列化"><span class="nav-number">5.3.</span> <span class="nav-text">FastJSON对象数组序列化和反序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">5.4.</span> <span class="nav-text">实例:</span></a></li></ol></li></ol></div>
             
 
           </div>
