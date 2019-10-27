@@ -59,18 +59,18 @@
   };
 </script>
 
-  <meta name="description" content="什么是监听器 监听器是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。监听器其实就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法立即被执行。  java的事件监听机制1、事件监听涉及到三个组件：事件源、事件对象、事件监听器2、当事件源上">
+  <meta name="description" content="1.什么是监听器 监听器是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。监听器其实就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法立即被执行。  ###2. java的事件监听机制1、事件监听涉及到三个组件：事件源、事件对象、事件监听">
 <meta name="keywords" content="监听器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="监听器入门">
 <meta property="og:url" content="http://cangmis.github.io/2019/09/10/监听器入门/index.html">
 <meta property="og:site_name" content="Cangmi">
-<meta property="og:description" content="什么是监听器 监听器是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。监听器其实就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法立即被执行。  java的事件监听机制1、事件监听涉及到三个组件：事件源、事件对象、事件监听器2、当事件源上">
+<meta property="og:description" content="1.什么是监听器 监听器是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。监听器其实就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法立即被执行。  ###2. java的事件监听机制1、事件监听涉及到三个组件：事件源、事件对象、事件监听">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-19T02:37:18.639Z">
+<meta property="og:updated_time" content="2019-10-23T09:32:48.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="监听器入门">
-<meta name="twitter:description" content="什么是监听器 监听器是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。监听器其实就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法立即被执行。  java的事件监听机制1、事件监听涉及到三个组件：事件源、事件对象、事件监听器2、当事件源上">
+<meta name="twitter:description" content="1.什么是监听器 监听器是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。监听器其实就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法立即被执行。  ###2. java的事件监听机制1、事件监听涉及到三个组件：事件源、事件对象、事件监听">
   <link rel="canonical" href="http://cangmis.github.io/2019/09/10/监听器入门/">
 
 
@@ -292,7 +292,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-19 10:37:18" itemprop="dateModified" datetime="2019-09-19T10:37:18+08:00">2019-09-19</time>
+                <time title="修改时间：2019-10-23 17:32:48" itemprop="dateModified" datetime="2019-10-23T17:32:48+08:00">2019-10-23</time>
               </span>
             
           
@@ -332,17 +332,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="什么是监听器"><a href="#什么是监听器" class="headerlink" title="什么是监听器"></a>什么是监听器</h2><blockquote>
+        <h3 id="1-什么是监听器"><a href="#1-什么是监听器" class="headerlink" title="1.什么是监听器"></a>1.什么是监听器</h3><blockquote>
 <p>监听器是一个专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监视的对象发生情况时，立即采取相应的行动。监听器其实就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法立即被执行。</p>
 </blockquote>
-<h3 id="java的事件监听机制"><a href="#java的事件监听机制" class="headerlink" title="java的事件监听机制"></a>java的事件监听机制</h3><p>1、事件监听涉及到三个组件：事件源、事件对象、事件监听器<br>2、当事件源上发生某一个动作时，它会调用事件监听器的一个方法，并在调用该方法时把事件对象传递进去，开发人员在监听器中通过事件对象，就可以拿到事件源，从而对事件源进行操作。</p>
-<h2 id="Javaweb监听器"><a href="#Javaweb监听器" class="headerlink" title="Javaweb监听器"></a>Javaweb监听器</h2><ul>
-<li><p>Servlet规范定义的一种特殊类</p>
-</li>
-<li><p>用于监听ServlertContext，HttpSession，ServletRequest等域对象的创建，销毁及其属性修改发生变化的事件</p>
-</li>
-<li><p>监听器可以在事件发生前后进行一些必要的处理操作</p>
-<h2 id="Javaweb监听器的分类"><a href="#Javaweb监听器的分类" class="headerlink" title="Javaweb监听器的分类"></a>Javaweb监听器的分类</h2></li>
+<p>###2. java的事件监听机制<br>1、事件监听涉及到三个组件：事件源、事件对象、事件监听器<br>2、当事件源上发生某一个动作时，它会调用事件监听器的一个方法，并在调用该方法时把事件对象传递进去，开发人员在监听器中通过事件对象，就可以拿到事件源，从而对事件源进行操作。</p>
+<h3 id="3-Javaweb监听器"><a href="#3-Javaweb监听器" class="headerlink" title="3.Javaweb监听器"></a>3.Javaweb监听器</h3><ul>
+<li>Servlet规范定义的一种特殊类</li>
+<li>用于监听ServlertContext，HttpSession，ServletRequest等域对象的创建，销毁及其属性修改发生变化的事件</li>
+<li>监听器可以在事件发生前后进行一些必要的处理操作</li>
+</ul>
+<h3 id="4-Javaweb监听器的分类"><a href="#4-Javaweb监听器的分类" class="headerlink" title="4.Javaweb监听器的分类"></a>4.Javaweb监听器的分类</h3><ul>
 <li><p>按监听对象分类</p>
 <ul>
 <li>ServletContext对象监听器</li>
@@ -358,12 +357,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="1-1监听ServletContext域对象的创建和销毁"><a href="#1-1监听ServletContext域对象的创建和销毁" class="headerlink" title="1.1监听ServletContext域对象的创建和销毁"></a>1.1监听ServletContext域对象的创建和销毁</h3><p>ServletContextListener接口用于监听ServletContext对象的创建和销毁事件。<br>实现了ServletContextListener接口的类都可以对ServletContext对象的创建和销毁进行监听。</p>
+<p>####4.1按监听对象分类</p>
+<h4 id="4-1-1监听ServletContext域对象的创建和销毁"><a href="#4-1-1监听ServletContext域对象的创建和销毁" class="headerlink" title="4.1.1监听ServletContext域对象的创建和销毁"></a>4.1.1监听ServletContext域对象的创建和销毁</h4><p>ServletContextListener接口用于监听ServletContext对象的创建和销毁事件。<br><br>实现了ServletContextListener接口的类都可以对ServletContext对象的创建和销毁进行监听。</p>
 <p>当ServletContext对象被创建时，激发contextInitialized (ServletContextEvent sce)方法。</p>
 <p>当ServletContext对象被销毁时，激发contextDestroyed(ServletContextEvent sce)方法。</p>
 <p>ServletContext域对象创建和销毁时机：<br>创建：服务器启动针对每一个Web应用创建ServletContext<br>销毁：服务器关闭前先关闭代表每一个web应用的ServletContext </p>
-<p>可以在web.xml中初始化参数<br>比如数据库的连接/程序名称/版本号  初始化之后可以通过ContextInitialized方法读取初始化参数 </p>
-<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>1.首先创建监听器接口实现类</p>
+<p>可以在web.xml中初始化参数<br>比如数据库的连接/程序名称/版本号  初始化之后可以通过ContextInitialized方法读取初始化参数</p>
+<h6 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h6><p>1.首先创建监听器接口实现类</p>
 <p>2.然后在xml中注册监听器和配置初始化参数</p>
 <p><strong>java类实现ServletContextListener接口：</strong></p>
 <pre><code>import javax.servlet.ServletContextEvent;
@@ -399,14 +399,14 @@ System.out.println(&quot;init:&quot;+appName+&quot;,&quot;+version);
  &lt;/context-param&gt;
 &lt;listener&gt;
 &lt;listener-class&gt;listener.MyServletContextListener&lt;/listener-class&gt;
-&lt;/listener&gt;</code></pre><h3 id="1-2监听HttpSession域对象的创建和销毁"><a href="#1-2监听HttpSession域对象的创建和销毁" class="headerlink" title="1.2监听HttpSession域对象的创建和销毁"></a>1.2监听HttpSession域对象的创建和销毁</h3><ul>
+&lt;/listener&gt;</code></pre><h4 id="4-1-2监听HttpSession域对象的创建和销毁"><a href="#4-1-2监听HttpSession域对象的创建和销毁" class="headerlink" title="4.1.2监听HttpSession域对象的创建和销毁"></a>4.1.2监听HttpSession域对象的创建和销毁</h4><ul>
 <li>HttpSessionListener 接口用于监听HttpSession对象的创建和销毁</li>
 <li>创建一个Session时，激发sessionCreated (HttpSessionEvent se) 方法</li>
 <li>销毁一个Session时，激发sessionDestroyed (HttpSessionEvent se) 方法。</li>
 </ul>
 <p>当用于第一次通过浏览器与服务器进行交互的时候，我们的服务器就会创建一个HttpSession对象<br>这个对象就存储着一个对象的专有信息比如用户的登陆名 登陆时间 权限</p>
 <p>HttpSession对象相当于一个用户，当创建一个对象就意味着多了一个用户访问<br>销毁要给对象，就相当于一个用户离开</p>
-<h3 id="实例：-1"><a href="#实例：-1" class="headerlink" title="实例："></a>实例：</h3><p><strong>java类实现 HttpSessionListener接口：</strong></p>
+<h5 id="实例：-1"><a href="#实例：-1" class="headerlink" title="实例："></a>实例：</h5><p><strong>java类实现 HttpSessionListener接口：</strong></p>
 <pre><code>import java.util.Date;
 
 import javax.servlet.http.HttpSessionEvent;
@@ -418,7 +418,8 @@ public class MyHttpSessionListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent  hse) {//创建
         // TODO Auto-generated method stub
   String sessionId=hse.getSession().getId();
-  Date createTime=new Date(hse.getSession().getCreationTime());//getCreationTime() ，返回SESSION创建时间，从1970年1月1号凌晨开始算起，但其返回值是毫秒，一般需要使用前面的转换来获取具体日期和时间。
+  Date createTime=new Date(hse.getSession().getCreationTime());
+//getCreationTime() ，返回SESSION创建时间，从1970年1月1号凌晨开始算起，但其返回值是毫秒，一般需要使用前面的转换来获取具体日期和时间。
 
 
 
@@ -444,27 +445,15 @@ public class MyHttpSessionListener implements HttpSessionListener {
 &lt;session-config&gt;
 &lt;session-timeout&gt;1&lt;/session-timeout&gt;
 
-&lt;/session-config&gt;</code></pre><p><strong>用户访问界面：　当我们访问jsp页面时，HttpSession对象就会创建，此时就可以在HttpSessionListener观察到HttpSession对象的创建过程了，我们可以写一个jsp页面观察HttpSession对象创建的过程。</strong></p>
-<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
-    pageEncoding=&quot;UTF-8&quot;%&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;title&gt;Insert title here&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;首页&lt;/h1&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;</code></pre><h3 id="1-3监听ServletRequest域对象的创建和销毁"><a href="#1-3监听ServletRequest域对象的创建和销毁" class="headerlink" title="1.3监听ServletRequest域对象的创建和销毁"></a>1.3监听ServletRequest域对象的创建和销毁</h3><p>ServletRequestListener接口用于监听ServletRequest 对象的创建和销毁</p>
+&lt;/session-config&gt;</code></pre><p><strong>用户访问界面：　<br><br>当我们访问jsp页面时，HttpSession对象就会创建，此时就可以在HttpSessionListener观察到HttpSession对象的创建过程了</strong></p>
+<h4 id="4-1-3监听ServletRequest域对象的创建和销毁"><a href="#4-1-3监听ServletRequest域对象的创建和销毁" class="headerlink" title="4.1.3监听ServletRequest域对象的创建和销毁"></a>4.1.3监听ServletRequest域对象的创建和销毁</h4><p>ServletRequestListener接口用于监听ServletRequest 对象的创建和销毁</p>
 <p>Request对象被创建时，监听器的requestInitialized(ServletRequestEvent sre)方法将会被调用</p>
 <p>Request对象被销毁时，监听器的requestDestroyed(ServletRequestEvent sre)方法将会被调用</p>
 <p>ServletRequest域对象创建和销毁时机：</p>
 <p>创建：用户每一次访问都会创建request对象</p>
 <p>销毁：当前访问结束，request对象就会销毁</p>
 <p><strong>请求完成之后生命周期结束，只要对资源服务器有一个请求就会调用监听器</strong></p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><pre><code>import javax.servlet.ServletRequestEvent;
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><pre><code>import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.http.HttpServletRequest;
 
@@ -509,39 +498,39 @@ public class MyServletRequestListener implements ServletRequestListener {
 &lt;/html&gt;</code></pre><p><strong>xml中注册监听器</strong></p>
 <pre><code>&lt;listener&gt;
 &lt;listener-class&gt;listener.MyServletRequestListener&lt;/listener-class&gt;
-&lt;/listener&gt;</code></pre><h3 id="2-域对象中属性的创建，替换和消除事件监听器"><a href="#2-域对象中属性的创建，替换和消除事件监听器" class="headerlink" title="2.域对象中属性的创建，替换和消除事件监听器"></a>2.域对象中属性的创建，替换和消除事件监听器</h3><p><strong>域对象中属性的变更的事件监听器就是用来监听 ServletContext, HttpSession, HttpServletRequest 这三个对象中的属性变更信息事件的监听器。</strong></p>
+&lt;/listener&gt;</code></pre><h4 id="4-2-按监听事件分类"><a href="#4-2-按监听事件分类" class="headerlink" title="4.2 按监听事件分类"></a>4.2 按监听事件分类</h4><h4 id="4-2-1域对象中属性的创建，替换和消除事件监听器"><a href="#4-2-1域对象中属性的创建，替换和消除事件监听器" class="headerlink" title="4.2.1域对象中属性的创建，替换和消除事件监听器"></a>4.2.1域对象中属性的创建，替换和消除事件监听器</h4><p><strong>域对象中属性的变更的事件监听器就是用来监听 ServletContext, HttpSession, HttpServletRequest 这三个对象中的属性变更信息事件的监听器。</strong></p>
 <ul>
 <li>ServletContext——ServletContextAttributeListener</li>
 <li>HttpSession——HttpSessionAttributeListener</li>
 <li>ServletRequest——ServletRequestAttributeListener</li>
 </ul>
 <p>对每个监听器都有共同的方法,只是接受的参数类型不同。:<strong>attributeAdded 属性增加</strong>,<strong>attributeReplaced 属性替换</strong>，<strong>attributeRemoved 属性移除</strong></p>
-<p>2.1 attributeAdded 方法</p>
+<p> attributeAdded 方法</p>
 <p>　　当向被监听对象中增加一个属性时，web容器就调用事件监听器的attributeAdded方法进行响应这个方法接收一个事件类型的参数，监听器可以通过这个参数来获得正在增加属性的域对象和被保存到域中的属性对象</p>
 <p>　　各个域属性监听器中的完整语法定义为：</p>
 <ul>
-<li>public void attributeAdded(ServletContextAttributeEvent scae)</li>
-<li>public void attributeReplaced(HttpSessionBindingEvent  hsbe)</li>
-<li>public void attributeRmoved(ServletRequestAttributeEvent srae)</li>
+<li><p>public void attributeAdded(ServletContextAttributeEvent scae)</p>
+</li>
+<li><p>public void attributeReplaced(HttpSessionBindingEvent  hsbe)</p>
+</li>
+<li><p>public void attributeRmoved(ServletRequestAttributeEvent srae)</p>
+<p>attributeRemoved 方法</p>
+</li>
 </ul>
-<p>2.2 attributeRemoved 方法</p>
 <p>　　当删除被监听对象中的一个属性时，web容器调用事件监听器的attributeRemoved方法进行响应<br>　　各个域属性监听器中的完整语法定义为：</p>
 <ul>
 <li>public void attributeRemoved(ServletContextAttributeEvent scae)</li>
 <li>public void attributeRemoved (HttpSessionBindingEvent  hsbe)</li>
 <li>public void attributeRemoved (ServletRequestAttributeEvent srae)</li>
 </ul>
-<p>2.3、attributeReplaced 方法</p>
-<p>　　当监听器的域对象中的某个属性被替换时，web容器调用事件监听器的attributeReplaced方法进行响应<br>　　各个域属性监听器中的完整语法定义为：</p>
+<p>attributeReplaced 方法</p>
+<p>　　当监听器的域对象中的某个属性被替换时，web容器调用事件监听器的attributeReplaced方法进行响应各个域属性监听器中的完整语法定义为：</p>
 <ul>
-<li><p>public void attributeReplaced(ServletContextAttributeEvent scae)</p>
-</li>
-<li><p>public void attributeReplaced (HttpSessionBindingEvent  hsbe)</p>
-</li>
-<li><p>public void attributeReplaced (ServletRequestAttributeEvent srae)</p>
-<h4 id="以ServletContextAttributeListener为例-其他的两个监听器同理："><a href="#以ServletContextAttributeListener为例-其他的两个监听器同理：" class="headerlink" title="以ServletContextAttributeListener为例,其他的两个监听器同理："></a>以ServletContextAttributeListener为例,其他的两个监听器同理：</h4></li>
+<li>public void attributeReplaced(ServletContextAttributeEvent scae)</li>
+<li>public void attributeReplaced (HttpSessionBindingEvent  hsbe)</li>
+<li>public void attributeReplaced (ServletRequestAttributeEvent srae)</li>
 </ul>
-<p>在java类中继承ServletContextAttributeListener接口</p>
+<h4 id="以ServletContextAttributeListener为例-其他的两个监听器同理："><a href="#以ServletContextAttributeListener为例-其他的两个监听器同理：" class="headerlink" title="以ServletContextAttributeListener为例,其他的两个监听器同理："></a>以ServletContextAttributeListener为例,其他的两个监听器同理：</h4><p>在java类中继承ServletContextAttributeListener接口</p>
 <pre><code>import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
 
@@ -591,7 +580,7 @@ application.removeAttribute(&quot;servletcontextPar&quot;);//移除属性
 <pre><code>&lt;listener&gt;
 &lt;description&gt;MyServletContextAttributeListener监听器&lt;/description&gt;
 &lt;listener-class&gt;listener.MyServletContextAttribute&lt;listener-class&gt;
-&lt;/listener&gt;</code></pre><h3 id="3-绑定到session中的某个对象的状态事件监听器"><a href="#3-绑定到session中的某个对象的状态事件监听器" class="headerlink" title="3.绑定到session中的某个对象的状态事件监听器"></a>3.绑定到session中的某个对象的状态事件监听器</h3><p>Servlet 规范中定义了两个特殊的监听器接口”HttpSessionBindingListener和HttpSessionActivationListener”来帮助JavaBean 对象了解自己在Session域中的这些状态： ，<strong>实现这两个接口的类不需要 web.xml 文件中进行注册。</strong></p>
+&lt;/listener&gt;</code></pre><h4 id="5-绑定到session中的某个对象的状态事件监听器"><a href="#5-绑定到session中的某个对象的状态事件监听器" class="headerlink" title="5.绑定到session中的某个对象的状态事件监听器"></a>5.绑定到session中的某个对象的状态事件监听器</h4><p>Servlet 规范中定义了两个特殊的监听器接口”HttpSessionBindingListener和HttpSessionActivationListener”来帮助JavaBean 对象了解自己在Session域中的这些状态： ，<strong>实现这两个接口的类不需要 web.xml 文件中进行注册。</strong></p>
 <p><strong>用户登陆就注册session,用户退出就解绑session</strong> </p>
 <ul>
 <li>valueBound（HttpSessionBindingEvent event）当监听器对象绑定至Http会话调用</li>
@@ -640,7 +629,7 @@ public class User implements HttpSessionBindingListener {
 &lt;lable&gt;
 &lt;span&gt;测试&lt;/span&gt;
 &lt;a href=&quot;bound.jsp&quot;target=&quot;_blank&quot;&gt;绑定&lt;/a&gt;
-&lt;a href=&quot;unbound.jsp&quot;target=&quot;_blank&quot;&gt;接触绑定&lt;/a&gt;
+&lt;a href=&quot;unbound.jsp&quot;target=&quot;_blank&quot;&gt;解除绑定&lt;/a&gt;
 &lt;/lable&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><p><strong>bound.jsp</strong></p>
@@ -742,7 +731,7 @@ public class User implements HttpSessionBindingListener {
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -824,7 +813,11 @@ public class User implements HttpSessionBindingListener {
         
           
         
-        <span class="site-state-item-count">21</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -869,7 +862,7 @@ public class User implements HttpSessionBindingListener {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是监听器"><span class="nav-number">1.</span> <span class="nav-text">什么是监听器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java的事件监听机制"><span class="nav-number">1.1.</span> <span class="nav-text">java的事件监听机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javaweb监听器"><span class="nav-number">2.</span> <span class="nav-text">Javaweb监听器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javaweb监听器的分类"><span class="nav-number">3.</span> <span class="nav-text">Javaweb监听器的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1监听ServletContext域对象的创建和销毁"><span class="nav-number">3.1.</span> <span class="nav-text">1.1监听ServletContext域对象的创建和销毁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例："><span class="nav-number">3.1.1.</span> <span class="nav-text">实例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2监听HttpSession域对象的创建和销毁"><span class="nav-number">3.2.</span> <span class="nav-text">1.2监听HttpSession域对象的创建和销毁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例：-1"><span class="nav-number">3.3.</span> <span class="nav-text">实例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3监听ServletRequest域对象的创建和销毁"><span class="nav-number">3.4.</span> <span class="nav-text">1.3监听ServletRequest域对象的创建和销毁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">3.5.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-域对象中属性的创建，替换和消除事件监听器"><span class="nav-number">3.6.</span> <span class="nav-text">2.域对象中属性的创建，替换和消除事件监听器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#以ServletContextAttributeListener为例-其他的两个监听器同理："><span class="nav-number">3.6.1.</span> <span class="nav-text">以ServletContextAttributeListener为例,其他的两个监听器同理：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-绑定到session中的某个对象的状态事件监听器"><span class="nav-number">3.7.</span> <span class="nav-text">3.绑定到session中的某个对象的状态事件监听器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是监听器"><span class="nav-number">1.</span> <span class="nav-text">1.什么是监听器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Javaweb监听器"><span class="nav-number">2.</span> <span class="nav-text">3.Javaweb监听器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Javaweb监听器的分类"><span class="nav-number">3.</span> <span class="nav-text">4.Javaweb监听器的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1监听ServletContext域对象的创建和销毁"><span class="nav-number">3.1.</span> <span class="nav-text">4.1.1监听ServletContext域对象的创建和销毁</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例："><span class="nav-number">3.1.0.1.</span> <span class="nav-text">实例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2监听HttpSession域对象的创建和销毁"><span class="nav-number">3.2.</span> <span class="nav-text">4.1.2监听HttpSession域对象的创建和销毁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实例：-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">实例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3监听ServletRequest域对象的创建和销毁"><span class="nav-number">3.3.</span> <span class="nav-text">4.1.3监听ServletRequest域对象的创建和销毁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">3.4.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-按监听事件分类"><span class="nav-number">3.5.</span> <span class="nav-text">4.2 按监听事件分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1域对象中属性的创建，替换和消除事件监听器"><span class="nav-number">3.6.</span> <span class="nav-text">4.2.1域对象中属性的创建，替换和消除事件监听器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以ServletContextAttributeListener为例-其他的两个监听器同理："><span class="nav-number">3.7.</span> <span class="nav-text">以ServletContextAttributeListener为例,其他的两个监听器同理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-绑定到session中的某个对象的状态事件监听器"><span class="nav-number">3.8.</span> <span class="nav-text">5.绑定到session中的某个对象的状态事件监听器</span></a></li></ol></li></ol></div>
             
 
           </div>
