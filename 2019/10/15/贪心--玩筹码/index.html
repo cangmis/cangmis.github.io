@@ -59,18 +59,14 @@
   };
 </script>
 
-  <meta name="description" content="题目  玩筹码    数轴上放置了一些筹码，每个筹码的位置存在数组 chips 当中。   你可以对 任何筹码 执行下面两种操作之一（不限操作次数，0 次也可以）：   将第 i 个筹码向左或者右移动 2 个单位，代价为 0。将第 i 个筹码向左或者右移动 1 个单位，代价为 1。最开始的时候，同一位置上也可能放着两个或者更多的筹码。   返回将所有筹码移动到同一位置（任意位置）上所需要的最小代价">
-<meta name="keywords" content="-leetcode--贪心">
-<meta property="og:type" content="article">
-<meta property="og:title" content="小张今天leetcode了吗">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Cangmi">
 <meta property="og:url" content="http://cangmis.github.io/2019/10/15/贪心--玩筹码/index.html">
 <meta property="og:site_name" content="Cangmi">
-<meta property="og:description" content="题目  玩筹码    数轴上放置了一些筹码，每个筹码的位置存在数组 chips 当中。   你可以对 任何筹码 执行下面两种操作之一（不限操作次数，0 次也可以）：   将第 i 个筹码向左或者右移动 2 个单位，代价为 0。将第 i 个筹码向左或者右移动 1 个单位，代价为 1。最开始的时候，同一位置上也可能放着两个或者更多的筹码。   返回将所有筹码移动到同一位置（任意位置）上所需要的最小代价">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-16T14:57:27.316Z">
+<meta property="og:updated_time" content="2019-11-07T00:30:52.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小张今天leetcode了吗">
-<meta name="twitter:description" content="题目  玩筹码    数轴上放置了一些筹码，每个筹码的位置存在数组 chips 当中。   你可以对 任何筹码 执行下面两种操作之一（不限操作次数，0 次也可以）：   将第 i 个筹码向左或者右移动 2 个单位，代价为 0。将第 i 个筹码向左或者右移动 1 个单位，代价为 1。最开始的时候，同一位置上也可能放着两个或者更多的筹码。   返回将所有筹码移动到同一位置（任意位置）上所需要的最小代价">
+<meta name="twitter:title" content="Cangmi">
   <link rel="canonical" href="http://cangmis.github.io/2019/10/15/贪心--玩筹码/">
 
 
@@ -80,7 +76,7 @@
   };
 </script>
 
-  <title>小张今天leetcode了吗 | Cangmi</title>
+  <title> | Cangmi</title>
   
 
 
@@ -259,7 +255,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">小张今天leetcode了吗
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -279,7 +275,7 @@
                 
               
 
-              <time title="创建时间：2019-10-15 22:10:28" itemprop="dateCreated datePublished" datetime="2019-10-15T22:10:28+08:00">2019-10-15</time>
+              <time title="创建时间：2019-10-15 15:37:35" itemprop="dateCreated datePublished" datetime="2019-10-15T15:37:35+08:00">2019-10-15</time>
             </span>
           
             
@@ -292,24 +288,9 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-16 22:57:27" itemprop="dateModified" datetime="2019-10-16T22:57:27+08:00">2019-10-16</time>
+                <time title="修改时间：2019-11-07 08:30:52" itemprop="dateModified" datetime="2019-11-07T08:30:52+08:00">2019-11-07</time>
               </span>
             
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -332,57 +313,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote>
-<ol start="1217">
-<li><strong>玩筹码</strong></li>
-</ol>
-</blockquote>
-<blockquote>
-<p>数轴上放置了一些筹码，每个筹码的位置存在数组 chips 当中。</p>
-</blockquote>
-<blockquote>
-<p>你可以对 任何筹码 执行下面两种操作之一（不限操作次数，0 次也可以）：</p>
-</blockquote>
-<blockquote>
-<p>将第 i 个筹码向左或者右移动 2 个单位，代价为 0。<br>将第 i 个筹码向左或者右移动 1 个单位，代价为 1。<br>最开始的时候，同一位置上也可能放着两个或者更多的筹码。</p>
-</blockquote>
-<blockquote>
-<p>返回将所有筹码移动到同一位置（任意位置）上所需要的最小代价。</p>
-</blockquote>
-<blockquote>
-<p>示例 1：</p>
-</blockquote>
-<blockquote>
-<p>输入：chips = [1,2,3]<br>输出：1<br>解释：第二个筹码移动到位置三的代价是 1，第一个筹码移动到位置三的代价是 0，总代价为 1。<br>示例 2：</p>
-</blockquote>
-<blockquote>
-<p>输入：chips = [2,2,2,3,3]<br>输出：2<br>解释：第四和第五个筹码移动到位置二的代价都是 1，所以最小总代价为 2。</p>
-</blockquote>
-<blockquote>
-<p>提示：</p>
-</blockquote>
-<blockquote>
-<p>1 &lt;= chips.length &lt;= 100<br>1 &lt;= chips[i] &lt;= 10^9</p>
-</blockquote>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>其实看懂了题目很简单。题目的意思可以这样理解。偶数到偶数位置代价为0。奇数到奇数位置代价为0.</p>
-<p>那么就需要把所有偶数的筹码都转移到统一的一个偶数位置上。把所有奇数位置的筹码都转移到统一的一个奇数位置 。</p>
-<p>然后把奇数位置的筹码个数和偶数位置的筹码个数相比，选则其中较小的那个，转移该位置的所有筹码。最小代价就是该位置的筹码数目。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>class Solution {
-public int minCostToMoveChips(int[] chips) {
-    int e=0;
-    int o=0;
-   for(int i=0;i&lt;chips.length;i++)
-   {
-       if(chips[i]%2==0)
-           e++;
-      else
-          o++;
-
-   }
-
- return Math.min(e,o); 
-}
-}</code></pre>
+        
     </div>
 
     
@@ -390,16 +321,10 @@ public int minCostToMoveChips(int[] chips) {
     
 
     <footer class="post-footer">
-          
-        
-        <div class="post-tags">
-            <a href="/tags/leetcode-贪心/" rel="tag"><i class="fa fa-google"></i> -leetcode--贪心</a>
-          
-        </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/10/15/贪心-翻转矩阵后的得分/" rel="next" title="小张今天leetcode了吗">
-                <i class="fa fa-chevron-left"></i> 小张今天leetcode了吗
+              <a href="/2019/10/09/MySQL数据操作/" rel="next" title="MySQL基础之数据类型">
+                <i class="fa fa-chevron-left"></i> MySQL基础之数据类型
               </a>
             
           </div>
@@ -440,17 +365,8 @@ public int minCostToMoveChips(int[] chips) {
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,7 +381,7 @@ public int minCostToMoveChips(int[] chips) {
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -488,7 +404,9 @@ public int minCostToMoveChips(int[] chips) {
         
           
         
-        <span class="site-state-item-count">4</span>
+          
+        
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -502,8 +420,6 @@ public int minCostToMoveChips(int[] chips) {
           
         
         
-        
-          
         
           
         
@@ -586,23 +502,6 @@ public int minCostToMoveChips(int[] chips) {
 
         </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
