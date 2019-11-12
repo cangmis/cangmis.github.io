@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Cangmi">
 <meta property="og:description" content="1.Maven项目的目录约定MavenProjectRoot(项目根目录)   |—-src   |     |—-main   |     |         |—-java ——存放项目的.java文件   |     |         |—-resources ——存放项目资源文件，如spring, hibernate配置文件   |     |—-test   |     |">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-12T14:52:34.215Z">
+<meta property="og:updated_time" content="2019-11-12T14:59:19.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven学习二">
 <meta name="twitter:description" content="1.Maven项目的目录约定MavenProjectRoot(项目根目录)   |—-src   |     |—-main   |     |         |—-java ——存放项目的.java文件   |     |         |—-resources ——存放项目资源文件，如spring, hibernate配置文件   |     |—-test   |     |">
@@ -279,7 +279,7 @@
                 
               
 
-              <time title="创建时间：2019-11-12 22:36:09 / 修改时间：22:52:34" itemprop="dateCreated datePublished" datetime="2019-11-12T22:36:09+08:00">2019-11-12</time>
+              <time title="创建时间：2019-11-12 22:36:09 / 修改时间：22:59:19" itemprop="dateCreated datePublished" datetime="2019-11-12T22:36:09+08:00">2019-11-12</time>
             </span>
           
             
@@ -350,12 +350,11 @@
   &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
   &lt;version&gt;8.0.16&lt;/version&gt;
 &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre><h3 id="5-去哪里找这些jar包？"><a href="#5-去哪里找这些jar包？" class="headerlink" title="5.去哪里找这些jar包？"></a>5.去哪里找这些jar包？</h3><p>####5.1maven中央仓库的检索网站：</p>
-<p>检索链接：<a href="https://search.maven.org" target="_blank" rel="noopener">https://search.maven.org</a></p>
+&lt;/dependencies&gt;</code></pre><h3 id="5-去哪里找这些jar包？"><a href="#5-去哪里找这些jar包？" class="headerlink" title="5.去哪里找这些jar包？"></a>5.去哪里找这些jar包？</h3><h4 id="5-1maven中央仓库的检索网站："><a href="#5-1maven中央仓库的检索网站：" class="headerlink" title="5.1maven中央仓库的检索网站："></a>5.1maven中央仓库的检索网站：</h4><p>检索链接：<a href="https://search.maven.org" target="_blank" rel="noopener">https://search.maven.org</a></p>
 <p>需要什么jar包就去搜索。<br>可直接复制该jar包的依赖拷贝到pom.xml的dependencies中。保存后便自动下载。<br><br>在Maven Dependencies 中便可以查看该jar包。</p>
 <h4 id="5-2其他"><a href="#5-2其他" class="headerlink" title="5.2其他"></a>5.2其他</h4><p>当有些程序需要的jar包不只是一个的时候<br><br>maven就会对dependency进行深入解析将关联的jar包全部下载下来</p>
-<p>###6.本地仓库和中央仓库<br>maven加载pom.xml时候查看依赖，maven先去本地仓库查找。（m2\repository)<br><br>如果没有的话就去中央仓库进行下载</p>
-<p>###7.私服（提高下载速度）<br>最出名的是阿里云的maven私服<br><br>私服地址：<br><a href="https://maven.aliyun.com" target="_blank" rel="noopener">https://maven.aliyun.com</a></p>
+<h3 id="6-本地仓库和中央仓库"><a href="#6-本地仓库和中央仓库" class="headerlink" title="6.本地仓库和中央仓库"></a>6.本地仓库和中央仓库</h3><p>maven加载pom.xml时候查看依赖，maven先去本地仓库查找。（m2\repository)<br><br>如果没有的话就去中央仓库进行下载</p>
+<h3 id="7-私服（提高下载速度）"><a href="#7-私服（提高下载速度）" class="headerlink" title="7.私服（提高下载速度）"></a>7.私服（提高下载速度）</h3><p>最出名的是阿里云的maven私服<br><br>私服地址：<br><a href="https://maven.aliyun.com" target="_blank" rel="noopener">https://maven.aliyun.com</a></p>
 <p>复制服务器地址 </p>
 <blockquote>
 <p><a href="https://maven.aliyun.com/repository/public" target="_blank" rel="noopener">https://maven.aliyun.com/repository/public</a></p>
@@ -369,8 +368,7 @@
 &lt;name&gt;aliyun&lt;/name&gt;
 &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;
 &lt;/repository&gt;
-&lt;/repositories&gt;</code></pre><p>###8.Maven打包</p>
-<ul>
+&lt;/repositories&gt;</code></pre><h3 id="8-Maven打包"><a href="#8-Maven打包" class="headerlink" title="8.Maven打包"></a>8.Maven打包</h3><ul>
 <li>Maven可以将项目打包为jar或者war包</li>
 <li>通过Plugins（插件）进行打包</li>
 <li>Maven输出jar包的插件：maven-assembly-plugin<h3 id="9-插件使用"><a href="#9-插件使用" class="headerlink" title="9.插件使用"></a>9.插件使用</h3>  <bulid>
@@ -499,7 +497,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -585,7 +583,9 @@
         
           
         
-        <span class="site-state-item-count">23</span>
+          
+        
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -630,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Maven项目的目录约定"><span class="nav-number">1.</span> <span class="nav-text">1.Maven项目的目录约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-用eclipse操作Maven"><span class="nav-number">2.</span> <span class="nav-text">2.用eclipse操作Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Maven依赖管理"><span class="nav-number">3.</span> <span class="nav-text">3.Maven依赖管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-maven的标准依赖配置"><span class="nav-number">4.</span> <span class="nav-text">4.maven的标准依赖配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-去哪里找这些jar包？"><span class="nav-number">5.</span> <span class="nav-text">5.去哪里找这些jar包？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2其他"><span class="nav-number">5.1.</span> <span class="nav-text">5.2其他</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-插件使用"><span class="nav-number">6.</span> <span class="nav-text">9.插件使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-打jar包"><span class="nav-number">7.</span> <span class="nav-text">10.打jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-如何运行jar包"><span class="nav-number">8.</span> <span class="nav-text">11.如何运行jar包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Maven项目的目录约定"><span class="nav-number">1.</span> <span class="nav-text">1.Maven项目的目录约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-用eclipse操作Maven"><span class="nav-number">2.</span> <span class="nav-text">2.用eclipse操作Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Maven依赖管理"><span class="nav-number">3.</span> <span class="nav-text">3.Maven依赖管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-maven的标准依赖配置"><span class="nav-number">4.</span> <span class="nav-text">4.maven的标准依赖配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-去哪里找这些jar包？"><span class="nav-number">5.</span> <span class="nav-text">5.去哪里找这些jar包？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1maven中央仓库的检索网站："><span class="nav-number">5.1.</span> <span class="nav-text">5.1maven中央仓库的检索网站：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2其他"><span class="nav-number">5.2.</span> <span class="nav-text">5.2其他</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-本地仓库和中央仓库"><span class="nav-number">6.</span> <span class="nav-text">6.本地仓库和中央仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-私服（提高下载速度）"><span class="nav-number">7.</span> <span class="nav-text">7.私服（提高下载速度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Maven打包"><span class="nav-number">8.</span> <span class="nav-text">8.Maven打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-插件使用"><span class="nav-number">9.</span> <span class="nav-text">9.插件使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-打jar包"><span class="nav-number">10.</span> <span class="nav-text">10.打jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-如何运行jar包"><span class="nav-number">11.</span> <span class="nav-text">11.如何运行jar包</span></a></li></ol></div>
             
 
           </div>

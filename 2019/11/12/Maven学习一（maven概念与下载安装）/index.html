@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Cangmi">
 <meta property="og:description" content="1.什么是Maven Maven(翻译为”专家”，”内行”)是跨平台的项目管理工具。主要服务于基于Java平台的项目构建，依赖管理和项目信息管理。  2.Maven的核心特征 项目设置遵循统一的规则，保证不同开发环境的兼容性  强大的依赖管理，项目依赖组件自动下载，自动更新  依赖指的是jar包之间的相互依赖，比如我们搭建一个Struts2的开发框架时，光光有struts2-core-2.3.16">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-12T14:52:34.973Z">
+<meta property="og:updated_time" content="2019-11-12T14:59:21.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven学习一">
 <meta name="twitter:description" content="1.什么是Maven Maven(翻译为”专家”，”内行”)是跨平台的项目管理工具。主要服务于基于Java平台的项目构建，依赖管理和项目信息管理。  2.Maven的核心特征 项目设置遵循统一的规则，保证不同开发环境的兼容性  强大的依赖管理，项目依赖组件自动下载，自动更新  依赖指的是jar包之间的相互依赖，比如我们搭建一个Struts2的开发框架时，光光有struts2-core-2.3.16">
@@ -279,7 +279,7 @@
                 
               
 
-              <time title="创建时间：2019-11-12 22:37:01 / 修改时间：22:52:34" itemprop="dateCreated datePublished" datetime="2019-11-12T22:37:01+08:00">2019-11-12</time>
+              <time title="创建时间：2019-11-12 22:37:01 / 修改时间：22:59:21" itemprop="dateCreated datePublished" datetime="2019-11-12T22:37:01+08:00">2019-11-12</time>
             </span>
           
             
@@ -338,7 +338,7 @@
 <li><p>只需要定义一个pom.xml,然后把源码放到默认的目录，Maven帮我们处理其他事情</p>
 </li>
 </ul>
-<h3 id="3-Maven-下载与环境配置"><a href="#3-Maven-下载与环境配置" class="headerlink" title="3.Maven 下载与环境配置"></a>3.Maven 下载与环境配置</h3><p>####3.1下载<br>下载地址<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a><br>解压缩安装包即可</p>
+<h3 id="3-Maven-下载与环境配置"><a href="#3-Maven-下载与环境配置" class="headerlink" title="3.Maven 下载与环境配置"></a>3.Maven 下载与环境配置</h3><h4 id="3-1下载"><a href="#3-1下载" class="headerlink" title="3.1下载"></a>3.1下载</h4><p>下载地址<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a><br>解压缩安装包即可</p>
 <p>Maven目录分析</p>
 <ul>
 <li>bin：含有mvn运行的脚本</li>
@@ -346,9 +346,9 @@
 <li>conf：含有settings.xml配置文件</li>
 <li>lib：含有Maven运行时所需要的java类库</li>
 </ul>
-<p>####3.2设置环境变量<br>首先要确保电脑上已经安装了JDK(要jdk 1.6+的版本)</p>
+<h4 id="3-2设置环境变量"><a href="#3-2设置环境变量" class="headerlink" title="3.2设置环境变量"></a>3.2设置环境变量</h4><p>首先要确保电脑上已经安装了JDK(要jdk 1.6+的版本)</p>
 <p>然后再高级配置中的path目录下添加maven的bin目录下的地址</p>
-<p>####3.3检验是否安装成功<br>在cmd中输入 <strong>mvn -v</strong></p>
+<h4 id="3-3检验是否安装成功"><a href="#3-3检验是否安装成功" class="headerlink" title="3.3检验是否安装成功"></a>3.3检验是否安装成功</h4><p>在cmd中输入 <strong>mvn -v</strong></p>
 <p>如果显示如下类似信息，证明安装完成</p>
 <blockquote>
 <p>C:\Users\888&gt;mvn -v<br>Apache Maven 3.6.2 (40f52333136460af0dc0d7232c0dc0bcf0d9e117; 2019-08-27T23:06:16+08:00)<br>Maven home: E:\apache-maven-3.6.2\bin..<br>Java version: 1.8.0_101, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk1.8.0_101\jre<br>Default locale: zh_CN, platform encoding: GBK<br>OS name: “windows 10”, version: “10.0”, arch: “amd64”, family: “windows”</p>
@@ -432,7 +432,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -518,7 +518,9 @@
         
           
         
-        <span class="site-state-item-count">23</span>
+          
+        
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -563,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是Maven"><span class="nav-number">1.</span> <span class="nav-text">1.什么是Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Maven的核心特征"><span class="nav-number">2.</span> <span class="nav-text">2.Maven的核心特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Maven-下载与环境配置"><span class="nav-number">3.</span> <span class="nav-text">3.Maven 下载与环境配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是Maven"><span class="nav-number">1.</span> <span class="nav-text">1.什么是Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Maven的核心特征"><span class="nav-number">2.</span> <span class="nav-text">2.Maven的核心特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Maven-下载与环境配置"><span class="nav-number">3.</span> <span class="nav-text">3.Maven 下载与环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1下载"><span class="nav-number">3.1.</span> <span class="nav-text">3.1下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2设置环境变量"><span class="nav-number">3.2.</span> <span class="nav-text">3.2设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3检验是否安装成功"><span class="nav-number">3.3.</span> <span class="nav-text">3.3检验是否安装成功</span></a></li></ol></li></ol></div>
             
 
           </div>
